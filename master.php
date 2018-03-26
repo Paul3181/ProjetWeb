@@ -58,13 +58,11 @@
 			
 			<div class="row">
 				<div class="col-lg-6">
-					Et olim licet otiosae sint tribus pacataeque centuriae et nulla suffragiorum certamina set 
-					Pompiliani redierit securitas temporis, per omnes tamen quotquot sunt partes terrarum, 
-					ut domina suscipitur et regina et ubique patrum reverenda cum auctoritate canities populique 
-					Romani nomen circumspectum et verecundum.
-				</div>
-				<div class="col-lg-6">
-					<div id="map"></div>
+					Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. 
+					in quibus hoc primum est in quo admirer, cur in gravissimis rebus non delectet eos sermo patrius, 
+					cum idem fabellas Latinas ad verbum e Graecis expressas non inviti legant. 
+					quis enim tam inimicus paene nomini Romano est, qui Ennii Medeam aut Antiopam Pacuvii spernat aut reiciat,
+					quod se isdem Euripidis fabulis delectari dicat, Latinas litteras oderit?
 				</div>
 			</div>
 			
