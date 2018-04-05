@@ -20,7 +20,7 @@ h1 {
 }
 #map {
     width : 100%;
-    height : 800px;
+    height : 400px;
     /*margin-left: auto;
     margin-right: auto*/
 }
@@ -68,7 +68,7 @@ p {
 	height:100%;
 	margin: 0px;
 	padding: 0px;
-	background: url('./images/glass.jpg') no-repeat center fixed; 
+	background: url('../images/glass.jpg') no-repeat center fixed;
 	position: absolute;
 	background-size: cover; 
 }
