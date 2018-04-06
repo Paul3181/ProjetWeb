@@ -25,13 +25,26 @@
 	</style>
 	
   </head>
+
+    <?php
+    require_once('include/connect.inc.php');
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $reponse1 = $conn->query('SELECT * FROM formation WHERE id_formation=2');
+    $master = $reponse1->fetch();
+
+    $reponse2 = $conn->query('SELECT * FROM ancien_etudiant ae, a_effectue e WHERE ae.id_etud = e.fk_id_etud and e.fk_id_formation ='. $master[0]);
+
+
+
+    ?>
+
   
   <body data-spy="scroll" data-target=".navbar" data-offset="50">
   
 		<div class="containerSpe">
 			<div class="row">
 				<div class="col-lg-12">
-							<nav class="navbar navbar-inverse navbar-fixed-top">
+							<nav class="navbar-inverse navbar-fixed-top">
 							  <div class="container-fluid">
 								<div class="navbar-header">
 									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -40,7 +53,9 @@
 									  <span class="icon-bar"></span>
 									  <span class="icon-bar"></span>
 								  </button>
-								  <a class="navbar-brand" href="#">Nom du master</a>
+                                    <?php
+								  echo'<a class="navbar-brand" href="#">'. $master[2] . '</a>'
+								  ?>
 								</div>
 								<div>
 								  <div class="collapse navbar-collapse" id="myNavbar">
@@ -56,10 +71,11 @@
 							</nav>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-lg-12">
 					<div id="section1" class="container-fluid">
-					  <h1>Presentation</h1>
+					  <h1><?php echo $master[1]?></h1>
 					  <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
 					  <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
 					</div>
@@ -75,8 +91,12 @@
 					</div>
 					<div id="section4" class="container-fluid">
 					  <h1>Contacts</h1>
-					  <p>Orientis vero limes in longum protentus et rectum ab Euphratis fluminis ripis ad usque supercilia porrigitur Nili, laeva Saracenis conterminans gentibus, dextra pelagi fragoribus patens, quam plagam Nicator Seleucus occupatam auxit magnum in modum, cum post Alexandri Macedonis obitum successorio iure teneret regna Persidis, efficaciae inpetrabilis rex, ut indicat cognomentum.</p>
-					  <p>Orientis vero limes in longum protentus et rectum ab Euphratis fluminis ripis ad usque supercilia porrigitur Nili, laeva Saracenis conterminans gentibus, dextra pelagi fragoribus patens, quam plagam Nicator Seleucus occupatam auxit magnum in modum, cum post Alexandri Macedonis obitum successorio iure teneret regna Persidis, efficaciae inpetrabilis rex, ut indicat cognomentum.</p>
+                        <?php
+                        while ($etud = $reponse2->fetch()){
+                            echo $etud[2] . '   ' . $etud[1] . "\n";
+                        }
+
+                        ?>
 					</div>
 				</div>
 			</div>
