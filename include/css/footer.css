@@ -1,0 +1,12 @@
+/* Place the footer at the bot of the page */
+.footer {
+	position: absolute;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 40px;
+	background-color: #10222B;
+	/* Set the inner margin for the pictures */
+	/*padding: 10px;*/
+	color: white;
+	/*bottom: 0;*/
+}

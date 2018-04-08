@@ -1,14 +1,3 @@
-/* Place the footer at the bot of the page */
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 40px;
-	background-color: #10222B;
-	/* Set the inner margin for the pictures */
-	padding: 10px;
-}
 
 .text_bdp {
 	color: white;
@@ -36,16 +25,52 @@ h1 {
     padding: 0 40% 0 45%;
 }
 
+.navleft{
+	width: 50%;
+    float: left;
+    margin-left: 20px;
+}
+
+.navright{
+    float: left;
+}
+
+.navright .btn-primary{
+    float: left;
+	margin: 0 10px 0 10px;
+}
+
+#content{
+	margin-bottom: 20px;
+}
+
 .left{
 	float: left;
-	width: 20%;
+	width: 54%;
 	background-color: gray;
+	margin: 0 2px 0 20px;
 }
 
 .right{
 	float: right;
-	width: 80%;
+	width: 40%;
 	height: 100%;
+	margin: 0 20px 0 2px;
+}
+
+.card{
+	background-color: white;
+    border: 1px solid #e2e2e2;
+	width: 80%;
+	margin: 30px 10px 30px 100px;
+}
+
+.card-title{
+	margin: 10px;
+}
+
+.card-text{
+	margin: 10px;
 }
 
 .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
@@ -53,8 +78,6 @@ h1 {
 }
 
 body {
-		padding-top: 0x;
-		padding-bottom: 20px;
 		background-color:#d9d9d9
 	}
 	

@@ -264,16 +264,9 @@ a.article, a.article:hover {
     margin-right: auto*/
 }
 
-.right{
-    width: 100%;
-    height: 100vh;
-}
-
 .card{
     background-color: white;
     border: 1px solid #e2e2e2;
-
-
 }
 
 .card-title{

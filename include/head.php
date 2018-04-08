@@ -19,6 +19,7 @@
 <!--cssFiles-->
 <link rel="stylesheet" href="./include/css/sidebar.css"/>
 <link rel="stylesheet" href="./include/css/style.css">
+<link rel="stylesheet" href="./include/css/footer.css">
 
 
 
