@@ -1,53 +1,79 @@
-
-.text_bdp {
-	color: white;
+body {
+	background-color:white;
+}
+	
+p {
+	color: black;
 }
 
 h1 {
     text-align:center;
 	color: #4484ce;
 }
+
+h2 {
+    margin-left: 52px;
+}
+
 #map {
     width : 100%;
-    height : 400px;
+    height : 500px;
     /*margin-left: auto;
     margin-right: auto*/
 }
 
-.bar{
-	width: 100%;
-	height: 50px;
-	background-color: gray;
+#content{
+	margin-bottom: 50px;
+	height: 100%;
+    transition: all 0.3s;
+    width: 100%;
 }
 
-.btn-group{
-	display: inline-block;
-    padding: 0 40% 0 45%;
+#nav{
+	background-color: rgba(0,0,0,.075);    
+	border-bottom: 1px solid #00000014;
+}
+
+#nav h1{
+	margin-top: 0;
+	padding-top: 20px;
+}
+
+.results{
+	margin-top: 50px;
+}
+
+.row{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.navbar-header{
+    position: sticky;
+    top: 0px;
+    left: 0px;
 }
 
 .navleft{
-	width: 50%;
+	width: 90%;
     float: left;
-    margin-left: 20px;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
 }
 
 .navright{
-    float: left;
+    float: right;
 }
 
 .navright .btn-primary{
-    float: left;
-	margin: 0 10px 0 10px;
-}
-
-#content{
-	margin-bottom: 20px;
+	margin: 0 0 0 10px;
 }
 
 .left{
 	float: left;
 	width: 54%;
-	background-color: gray;
 	margin: 0 2px 0 20px;
 }
 
@@ -55,51 +81,52 @@ h1 {
 	float: right;
 	width: 40%;
 	height: 100%;
-	margin: 0 20px 0 2px;
+	margin: 75px 30px 0 2px;
+}
+
+.left .badge{
+	margin-left: 20px;
 }
 
 .card{
 	background-color: white;
     border: 1px solid #e2e2e2;
 	width: 80%;
-	margin: 30px 10px 30px 100px;
+	margin: 30px auto;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
 .card-title{
-	margin: 10px;
+	background-color: rgba(189, 189, 189, 0.23);
+    margin: 0;
+	padding: 10px;
 }
 
 .card-text{
 	margin: 10px;
 }
 
-.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
-	color: black;
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  right: 30px;
+  z-index: 99;
+  font-size: 25px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
 }
 
-body {
-		background-color:#d9d9d9
-	}
-	
-p {
-	color: black;
+#myBtn:hover .glyphicon{
+  text-shadow: -2px 0 #337ab7, 0 2px #337ab7, 2px 0 #337ab7, 0 -2px #337ab7;
 }
 
-
-#panel {
-	width: 100%;
-	height:100%;
-	margin: 0px;
-	padding: 0px;
-	background: url('../images/glass.jpg') no-repeat center fixed;
-	position: absolute;
-	background-size: cover; 
+#myBtn {
+  color: black;
 }
 
-#section1 {padding-top:50px;height:500px;color: #fff; background-color: #D9D3F3;}
-#section2 {padding-top:50px;height:500px;color: #fff; background-color: #D6D4DD;}
-#section3 {padding-top:50px;height:500px;color: #fff; background-color: #D4D6C8;}
-#section4 {padding-top:50px;height:500px;color: #fff; background-color: #D1D7B2;}
-
-#containerSpe {overflow-x:scroll;}
 

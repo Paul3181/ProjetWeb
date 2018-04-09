@@ -5,27 +5,43 @@
 	</head>
 
     <body>
+	
+	<button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></button>
+	
     <div class="wrapper">
         <!-- Sidebar Holder -->
-        <nav id="sidebar">
-                <form action="index.php" method="GET">
+        <nav id="sidebar" class="active">
+                <form action="index.php#results" method="GET">
 				  <div class="form-group">
 					<label for="query">Formation</label>
-					<input type="text" class="form-control" id="query" name="query">
+					<?php
+									require_once('include/connect.inc.php');
+									$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+									if (isset($_GET['query'])){
+										echo '<input type="search" class="form-control" id="query" name="query" value="'.$_GET['query'].'">';
+									}else{
+										echo '<input type="search" class="form-control" id="query" name="query">';
+									}
+					?>
 				  </div>
 				  <div class="form-group">
 					<label for="exampleFormControlSelect1">Type</label>
 					<div class="form-check form-check-inline">
 					  <?php
-									require_once('include/connect.inc.php');
-									$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 									$reponse = $conn->query('SELECT DISTINCT type_form FROM formation');
 									$i=1;
 										while ($donnees = $reponse->fetch()){
-											echo '<label class="container">' . $donnees[0] . '
-													  <input type="checkbox" name="inName'. $i .'" value="' . $donnees[0] . '">
-													  <span class="checkmark"></span>
-												</label>';
+											if(isset($_GET['inName'. $i .''])){
+												echo '<label class="container">' . $donnees[0] . '
+														  <input type="checkbox" name="inName'. $i .'" value="' . $donnees[0] . ' " checked>
+														  <span class="checkmark"></span>
+													</label>';
+											}else{
+												echo '<label class="container">' . $donnees[0] . '
+														  <input type="checkbox" name="inName'. $i .'" value="' . $donnees[0] . '">
+														  <span class="checkmark"></span>
+													</label>';
+											}
 											$i++;
 										}
 										$reponse->closeCursor();
@@ -42,6 +58,10 @@
 												echo '<option>' . $donnees[0] . '</option>';
 											}
 											$reponse->closeCursor();
+											
+											if (isset($_GET['inputSpe'])){
+												echo '<option selected>' . $_GET['inputSpe'] . '</option>';
+											}
 							?>
 						</select>
 					</div>
@@ -55,10 +75,14 @@
 												echo '<option>' . $donnees[0] . '</option>';
 											}
 											$reponse->closeCursor();
+											
+											if (isset($_GET['inputReg'])){
+												echo '<option selected>' . $_GET['inputReg'] . '</option>';
+											}
 							?>
 						</select>
 					</div>
-				  <button type="submit" class="btn btn-primary" value="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				  <button type="submit" class="btn btn-primary" value="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button
 				</form>
             </nav>
 
@@ -67,23 +91,35 @@
 
 			<div class="navbar-header">
 				<button type="button" id="sidebarCollapse" class="navbar-btn">
+					<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
 					<span></span>
 					<span></span>
 					<span></span>
 				</button>
             </div>
 			
-			<div class="nav">
+			<div id="nav">
 				<div>
 					<h1>Trouver son master</h1>
 				</div>
 				<div>
 					<form>
 						<div class="form-group">
-							<label>Rechercher un master</label>
 								<div class="row">
 									<div class="navleft">
-										<input type="recherche" class="form-control" placeholder="Ex: Réseaux">
+									<?php
+										require_once('include/connect.inc.php');
+										$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+										if (isset($_GET['query'])){
+											if ($_GET['query']!=""){
+												echo '<input type="search" class="form-control" value="'.$_GET['query'].'">';
+											}else{
+												echo '<input type="search" class="form-control" placeholder="Ex: Réseaux">';
+											}
+										}else{
+											echo '<input type="search" class="form-control" placeholder="Ex: Réseaux">';
+										}
+									?>
 									</div>
 									<div class="navright">
 										<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
@@ -94,7 +130,7 @@
 				</div>
 			</div>
 
-            <div>
+            <div id="results" class="results">
                 <div class="left">
 					<?php
 								if (isset($_GET['query'])){
@@ -143,7 +179,7 @@
 									}
 									if (isset($_GET['inputReg'])){
 										if ($_GET['inputReg']!='Choose...'){
-											$sql .= " AND nom_region='". $_GET['inputReg'] . "'";
+											$sql .= ' AND nom_region="'. $_GET['inputReg'] . '"';
 										}
 									}
 									$sql .= " ORDER BY intitule_form";
@@ -157,16 +193,15 @@
 									//if(strlen($query) >= $min_length){
 										$raw_results = $conn->query($sql);
 										if($raw_results->rowCount() > 0){
-											echo '<h1>Résultats</h1>';
+											echo '<h2>Résultats</h2>';
 											$coords = array();
 											while($results = $raw_results->fetch()){
 												$count = $raw_results->rowCount();
 												$latitude = $results['latitude_etab'];
 												$longitude = $results['longitude_etab'];
 												$coords[] = array($latitude,$longitude);
-												/*$coordArray = array(
-													array('latitude'=>$latitude, 'longitude'=>$longitude)
-												);*/
+												$formation = $results['intitule_form'];
+												$formations[] = array($formation);
 												?>	
 													<div class="card">
 													  <div class="card-body">
@@ -183,7 +218,7 @@
 												echo $coords[ $i ][1] ,'<br/>'; 
 											  }*/
 										}else{
-											echo "<h1>Aucun résultat</h1>";
+											echo "<h2>Aucun résultat</h2>";
 										}
 									/*}else{
 										echo "Minimum length is ".$min_length;
@@ -209,7 +244,7 @@
 	
 	<script type="text/javascript">
 		var count = "<?php echo $count ?>";
-		$('.left h1').append('<span class="badge badge-secondary">'+count+'</span>');
+		$('.left h2').append('<span class="badge badge-secondary">'+count+'</span>');
 		
 		var coords = <?php echo json_encode($coords); ?>;
 		var map = L.map('map');
@@ -218,12 +253,14 @@
 		var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
 		map.setView([47.0, 3.0], 6);
 		map.addLayer(osm);
+		
+		var formations = <?php echo json_encode($formations); ?>;
 
 		// marker
 		for (i=0;i<coords.length;i++){
 			var marker = L.marker(coords[i]);
 			//marker.on('click',clicMarker);
-			marker.bindPopup('<b>Hello world!</b><br><a href="#">Accéder au master</a>').openPopup();
+			marker.bindPopup('<b>'+formations[i]+'</b><br><a href="#">Accéder au master</a>').openPopup();
 			marker.addTo(map);
 		}
 	</script>

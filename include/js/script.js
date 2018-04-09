@@ -1,31 +1,29 @@
+// When the user scrolls down 1000px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
 
+function scrollFunction() {
+    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
 
-/*
-function clicMarker(){
-	alert("a");
-}*/
-
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
 
 $(document).ready(function() {
-	
+
 	// collapse
 	$('#sidebarCollapse').on('click', function () {
 		$('#sidebar').toggleClass('active');
 		$(this).toggleClass('active');
+		
+		$('#nav').toggle();
+		//$('#nav').toggleClass('act');
     });
-	
-	// switch entre la carte et la liste des master
-	$('#btn1').on('click', function() {
-		$("div.desc").hide();
-		$("#right1").show();
-	});
-	$('#btn2').on('click', function() {
-		$("div.desc").hide();
-		$("#right2").show();
-	});
-	
-	if ($('#right2').height()>=638){
-		$('.right').css('height', '100%');
-	}
 	
 });
