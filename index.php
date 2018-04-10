@@ -2,6 +2,7 @@
 <html lang="fr">
     <head>
 		<?php include("./include/head.php"); ?>
+        <link rel="stylesheet" href="./include/css/sidebar.css"/>
 	</head>
 
     <body>
@@ -207,7 +208,8 @@
 													  <div class="card-body">
 														<h5 class="card-title"><?php echo $results['intitule_form'] ?></h5>
 														<p class="card-text"><?php echo $results['type_form'] . '<br />' . $results['nom_etab']?></p>
-														<a href="#" class="btn btn-primary">Accéder au master</a>
+                                                          <?php echo '<a href= "master.php?idm=' . $results['id_formation'] . '" onclick="window.open(this.href); return false;" class="btn btn-primary">Accéder au master</a>';
+                                                          ?>
 													  </div>
 													</div>
 												<?php
