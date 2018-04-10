@@ -31,6 +31,7 @@
 		body {
 			padding-top: 20px;
 			padding-bottom: 20px;
+			
 		}
 		.masthead li {
 			border-bottom : solid 1px #000;
