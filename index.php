@@ -3,11 +3,18 @@
     <head>
 		<?php include("./include/head.php"); ?>
         <link rel="stylesheet" href="./include/css/sidebar.css"/>
+		
+		<!--Leaflet MarkerCluster-->
+		<link rel="stylesheet" href="./include/css/MarkerCluster.css"/>
+		<link rel="stylesheet" href="./include/css/MarkerCluster.Default.css"/>
+		<script src="./include/js/leaflet.markercluster.js"></script>
+		<script src="./include/js/leaflet.markercluster-src.js"></script>
+
+		<!--Angular-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	</head>
 
-    <body>
-	
-	<button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></button>
+    <body ng-app="myApp" ng-controller="myCtrl">
 	
     <div class="wrapper">
         <!-- Sidebar Holder -->
@@ -19,9 +26,9 @@
 									require_once('include/connect.inc.php');
 									$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 									if (isset($_GET['query'])){
-										echo '<input type="search" class="form-control" id="query" name="query" value="'.$_GET['query'].'">';
+										echo '<input type="search" class="form-control" id="query" name="query" value="'.$_GET['query'].'" placeholder="Ex: Réseaux" ng-model="name">';
 									}else{
-										echo '<input type="search" class="form-control" id="query" name="query">';
+										echo '<input type="search" class="form-control" id="query" name="query" placeholder="Ex: Réseaux" ng-model="name">';
 									}
 					?>
 				  </div>
@@ -50,9 +57,27 @@
 					</div>
 					</div>
 					<div class="form-group">
+					<label for="exampleFormControlSelect1">Formation en alternance</label>
+					<div class="form-check form-check-inline">
+					  <?php
+											if(isset($_GET['alter'])){
+												echo '<label class="container">
+														  <input type="checkbox" name="alter" value="Oui" checked>
+														  <span class="checkmark"></span>
+													</label>';
+											}else{
+												echo '<label class="container">
+														  <input type="checkbox" name="alter" value="Oui">
+														  <span class="checkmark"></span>
+													</label>';
+											}
+						?>
+					</div>
+					</div>
+					<div class="form-group">
 						<label for="inputSpe">Spécialité</label>
 						<select name="inputSpe" id="inputSpe" class="form-control">
-							<option selected>Choose...</option>
+							<option selected>Indéfini(e)</option>
 							<?php
 										$reponse = $conn->query('SELECT lib_specialite FROM specialite');
 											while ($donnees = $reponse->fetch()){
@@ -69,7 +94,7 @@
 					<div class="form-group">
 						<label for="inputReg">Régions</label>
 						<select name="inputReg" id="inputReg" class="form-control">
-							<option selected>Choose...</option>
+							<option selected>Indéfini(e)</option>
 							<?php
 										$reponse = $conn->query('SELECT nom_region FROM region');
 											while ($donnees = $reponse->fetch()){
@@ -104,22 +129,16 @@
 					<h1>Trouver son master</h1>
 				</div>
 				<div>
-					<form>
+					<form> 
 						<div class="form-group">
 								<div class="row">
 									<div class="navleft">
 									<?php
-										require_once('include/connect.inc.php');
-										$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-										if (isset($_GET['query'])){
-											if ($_GET['query']!=""){
-												echo '<input type="search" class="form-control" value="'.$_GET['query'].'">';
-											}else{
-												echo '<input type="search" class="form-control" placeholder="Ex: Réseaux">';
-											}
-										}else{
-											echo '<input type="search" class="form-control" placeholder="Ex: Réseaux">';
-										}
+									if (isset($_GET['query'])){
+										echo '<input type="search" class="form-control" id="query" name="query" value="'.$_GET['query'].'" placeholder="Ex: Réseaux" ng-model="name">';
+									}else{
+										echo '<input type="search" class="form-control" id="query" name="query" placeholder="Ex: Réseaux" ng-model="name">';
+									}
 									?>
 									</div>
 									<div class="navright">
@@ -173,13 +192,16 @@
 											$sql .= " OR type_form='". $_GET['inName2'] . "'";
 										}
 									}
+									if (isset($_GET['alter'])){
+										$sql .= " AND alternance_form='Oui'";
+									}
 									if (isset($_GET['inputSpe'])){
-										if ($_GET['inputSpe']!='Choose...'){
+										if ($_GET['inputSpe']!='Indéfini(e)'){
 											$sql .= " AND lib_specialite='". $_GET['inputSpe'] . "'";
 										}
 									}
 									if (isset($_GET['inputReg'])){
-										if ($_GET['inputReg']!='Choose...'){
+										if ($_GET['inputReg']!='Indéfini(e)'){
 											$sql .= ' AND nom_region="'. $_GET['inputReg'] . '"';
 										}
 									}
@@ -196,6 +218,7 @@
 										if($raw_results->rowCount() > 0){
 											echo '<h2>Résultats</h2>';
 											$coords = array();
+											echo '<div class="listResults">';
 											while($results = $raw_results->fetch()){
 												$count = $raw_results->rowCount();
 												$latitude = $results['latitude_etab'];
@@ -214,6 +237,7 @@
 													</div>
 												<?php
 											}
+											echo '</div>';
 											/*$tailleCoords = sizeof($coords);
 											  for($i=0; $i<$tailleCoords; $i++){
 												echo $coords[ $i ][0] ,'<br/>';  
@@ -249,22 +273,23 @@
 		$('.left h2').append('<span class="badge badge-secondary">'+count+'</span>');
 		
 		var coords = <?php echo json_encode($coords); ?>;
+		var formations = <?php echo json_encode($formations); ?>;
+		
 		var map = L.map('map');
 		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 		var osmAttrib='Map data © OpenStreetMap contributors';
 		var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
 		map.setView([47.0, 3.0], 6);
 		map.addLayer(osm);
+		var markers = L.markerClusterGroup();
 		
-		var formations = <?php echo json_encode($formations); ?>;
-
 		// marker
 		for (i=0;i<coords.length;i++){
 			var marker = L.marker(coords[i]);
-			//marker.on('click',clicMarker);
 			marker.bindPopup('<b>'+formations[i]+'</b><br><a href="#">Accéder au master</a>').openPopup();
-			marker.addTo(map);
+			markers.addLayer(marker);
 		}
+		map.addLayer(markers);
 	</script>
     <script src="./include/js/script.js"></script>
     </body>
