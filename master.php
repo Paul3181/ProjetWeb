@@ -3,17 +3,54 @@
     <head>
 		<?php include("./include/head.php"); ?>
 	</head>
-	
-	
-	<script type="text/javascript">
 
-			$(document).ready(function() {
-				
-									
-				});
-						
-			
-		</script>
+
+    <?php
+    require_once('include/connect.inc.php');
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    //On recupere le master
+    $reponse1 = $conn->query('SELECT * FROM formation WHERE id_formation=' . $_GET['idm']);
+    $master = $reponse1->fetch();
+
+    //On recupere les etudiants du master
+    $reponse2 = $conn->query('SELECT * FROM ancien_etudiant ae, a_effectue e WHERE ae.id_etud = e.fk_id_etud and e.fk_id_formation ='. $master[0]);
+
+    //On recupere les mentions
+    $reponse3 = $conn->query('SELECT * FROM moyenne_l3');
+    $tabMoyenne = array();
+    while ($mention = $reponse3->fetch()){
+        $cpt = $conn->query('SELECT COUNT(*) FROM ancien_etudiant ae, a_effectue e WHERE ae.id_etud = e.fk_id_etud and e.fk_id_formation ='. $master[0] .' and ae.fk_id_moyenne_l3_etud='. $mention[0]);
+        $nbrM = $cpt->fetch();
+        $tab = array($mention[1],$nbrM[0]);
+        $tabMoyenne[] = ($tab);
+    }
+    ?>
+    
+
+    <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var moyenne = new Array(['Nombre Etudiants','Mention']);
+            <?php foreach($tabMoyenne as $key => $val){ ?>
+            moyenne.push(['<?php echo $val[0]; ?>',<?php echo $val[1]; ?>]);
+            <?php } ?>
+
+            var data = google.visualization.arrayToDataTable(moyenne);
+
+            var options = {
+                title: 'Mention l3 des étudiants:'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechartMoyenne'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
 	<style>
 		body {
 			padding-top: 20px;
@@ -25,18 +62,6 @@
 	</style>
 	
   </head>
-
-    <?php
-    require_once('include/connect.inc.php');
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $reponse1 = $conn->query('SELECT * FROM formation WHERE id_formation=' . $_GET['idm']);
-    $master = $reponse1->fetch();
-
-    $reponse2 = $conn->query('SELECT * FROM ancien_etudiant ae, a_effectue e WHERE ae.id_etud = e.fk_id_etud and e.fk_id_formation ='. $master[0]);
-
-    //$reponse3 = $conn->query('SELECT moyenne FROM formation WHERE id_formation=2');
-
-    ?>
 
   
   <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -80,16 +105,16 @@
 					  <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
 					</div>
 					<div id="section2">
-					  <h1>Avis</h1>
+					  <h3>Avis</h3>
 					  <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
 					  <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
 					</div>
 					<div id="section3">
-					  <h1>Statistique</h1>
-
+					  <h3>Statistique</h3>
+                        <div id="piechartMoyenne" style="width: 900px; height: 500px;"></div>
 					</div>
 					<div id="section4">
-					  <h1>Contacts</h1>
+					  <h3>Contacts</h3>
                         <?php
                         while ($etud = $reponse2->fetch()){
                             echo $etud[2] . '   ' . $etud[1] . "\n" . $etud[3] . "\n";
