@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 08 avr. 2018 à 17:05
+-- Généré le :  sam. 14 avr. 2018 à 22:12
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -309,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `etablissement` (
 --
 
 INSERT INTO `etablissement` (`id_etablissement`, `nom_etab`, `sigle_etab`, `code_postal_etab`, `ville_etab`, `pays_etab`, `fk_id_region_etab`, `latitude_etab`, `longitude_etab`) VALUES
-(1, 'Université Paul Sabatier - Toulouse 3', 'UPS', '31000', 'Toulouse', 'France', 'FR-OCC', '43.223813', '0.049147'),
+(1, 'Université Paul Sabatier - Toulouse 3', 'UPS', '31000', 'Toulouse', 'France', 'FR-OCC', '43.561797', '1.466393'),
 (2, 'Institut National Universitaire de Champollion', 'INUC', '81000', 'Albi', 'France', 'FR-OCC', '43.919499', '2.138867'),
 (3, 'Université Marie et Pierre Curie Paris VI', 'UMPC', '75000', 'Paris', 'France', 'FR-IDF', '48.847104', '2.357499'),
 (4, 'Montpellier 2', '', '34000', 'Montpellier', 'France', 'FR-OCC', '43.631621', '3.863449'),
@@ -342,6 +342,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `type_form` varchar(50) DEFAULT NULL,
   `fk_id_specialite_form` int(11) DEFAULT NULL,
   `fk_id_etablissement_form` int(11) DEFAULT NULL,
+  `alternance_form` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id_formation`),
   KEY `FK_fomation_id_specialite` (`fk_id_specialite_form`),
   KEY `FK_formation_id_etablissement` (`fk_id_etablissement_form`)
@@ -351,38 +352,38 @@ CREATE TABLE IF NOT EXISTS `formation` (
 -- Déchargement des données de la table `formation`
 --
 
-INSERT INTO `formation` (`id_formation`, `intitule_form`, `sigle_form`, `type_form`, `fk_id_specialite_form`, `fk_id_etablissement_form`) VALUES
-(1, 'Informatique', '', 'Master', 0, 1),
-(2, 'Stratégie Internet et Pilotage de Projets en Entreprise', 'SIPPE', 'Master', 0, 7),
-(3, 'Données et Connaissances', 'DC', 'Master', 0, 1),
-(4, 'Développement logiciel', 'DL', 'Master', 0, 1),
-(5, 'Data Science', 'DAC', 'Master', 0, 3),
-(6, 'Intelligence artificielle', 'IA', 'Master', 0, 3),
-(7, 'Mathématiques, Informatique Appliquées et Sciences Humaines et Sociales', 'MIASHS', 'Master', 0, 5),
-(8, 'Intelligence artificielle', 'IA', 'Master', 0, 6),
-(9, 'Informatique', '', 'Master', 0, 6),
-(10, 'Intelligence Artificielle et Reconnaissance de forme', 'IARF', 'Master', 0, 1),
-(11, 'Audiovisuel, Médias Interactifs Numériques, Jeux', 'AMINJ', 'Master', 0, 2),
-(12, 'Interactions homme-machine', 'IHM', 'Master', 0, 1),
-(13, 'Images, Games et Intelligent Agents', 'IMAGINA', 'Master', 0, 2),
-(14, 'BIG Data', '', 'Master', 0, 8),
-(15, 'Informatique', '', 'Master', 0, 9),
-(16, 'Système, réseau et internet ', 'SRI', 'Master', 0, 10),
-(17, 'Fiabilité Sécurité et  Intégration Logiciels', 'FSIL', 'Master', 0, 11),
-(18, 'Informatique, Synthèse d\'Images et Conception Graphique', 'ISICG', 'Master', 0, 18),
-(19, 'Ecole d\'ingénieur', '3IL', 'Ecole inge', 0, 12),
-(20, 'Modélisation Numérique et Réalité Virtuelle', 'MNRV', 'Master', 0, 13),
-(21, 'Architectures et Ingénierie du logiciel et du Web', 'AIGLE', 'Master', 0, 4),
-(22, 'Cybersécurité', 'CYBER', 'Master', 0, 14),
-(23, 'Ecole d’ingénieur', 'ISIS', 'Ecole inge', 0, 15),
-(24, 'Informatique Graphique et Analyse de l\'Image', 'IGAI', 'Master', 0, 1),
-(25, 'Mecatronique, Automatique, Robotique et Signal', 'MARS', 'Master', 0, 16),
-(26, 'Systèmes Interactifs et Robotique', 'SIR', 'Master', 0, 1),
-(27, 'Conception d\'Architecture de Machines et Systèmes Informatiques', 'CAMSI', 'Master', 0, 1),
-(28, 'Systèmes de télécoms & réseaux informatique', 'STRI', 'Master', 0, 1),
-(29, 'Développement intranet/internet', '', 'Licence pro', 0, 17),
-(30, 'Sciences de la Modélisation, de l\'Information et des Systèmes ', 'SMIS', 'Master', 0, 1),
-(31, 'Génie Logiciel, Logiciels Répartis et Embarqués', 'GLRE', 'Master', 0, 1);
+INSERT INTO `formation` (`id_formation`, `intitule_form`, `sigle_form`, `type_form`, `fk_id_specialite_form`, `fk_id_etablissement_form`, `alternance_form`) VALUES
+(1, 'Informatique', '', 'Master', 0, 1, NULL),
+(2, 'Stratégie Internet et Pilotage de Projets en Entreprise', 'SIPPE', 'Master', 0, 7, NULL),
+(3, 'Données et Connaissances', 'DC', 'Master', 0, 1, NULL),
+(4, 'Développement logiciel', 'DL', 'Master', 0, 1, 'Oui'),
+(5, 'Data Science', 'DAC', 'Master', 0, 3, NULL),
+(6, 'Intelligence artificielle', 'IA', 'Master', 0, 3, NULL),
+(7, 'Mathématiques, Informatique Appliquées et Sciences Humaines et Sociales', 'MIASHS', 'Master', 0, 5, 'Oui'),
+(8, 'Intelligence artificielle', 'IA', 'Master', 0, 6, NULL),
+(9, 'Informatique', '', 'Master', 0, 6, NULL),
+(10, 'Intelligence Artificielle et Reconnaissance de forme', 'IARF', 'Master', 0, 1, 'Oui'),
+(11, 'Audiovisuel, Médias Interactifs Numériques, Jeux', 'AMINJ', 'Master', 0, 2, 'Oui'),
+(12, 'Interactions homme-machine', 'IHM', 'Master', 0, 1, NULL),
+(13, 'Images, Games et Intelligent Agents', 'IMAGINA', 'Master', 0, 2, NULL),
+(14, 'BIG Data', '', 'Master', 0, 8, NULL),
+(15, 'Informatique', '', 'Master', 0, 9, NULL),
+(16, 'Système, réseau et internet ', 'SRI', 'Master', 0, 10, NULL),
+(17, 'Fiabilité Sécurité et  Intégration Logiciels', 'FSIL', 'Master', 0, 11, NULL),
+(18, 'Informatique, Synthèse d\'Images et Conception Graphique', 'ISICG', 'Master', 0, 18, NULL),
+(19, 'Ecole d\'ingénieur', '3IL', 'Ecole inge', 0, 12, 'Oui'),
+(20, 'Modélisation Numérique et Réalité Virtuelle', 'MNRV', 'Master', 0, 13, NULL),
+(21, 'Architectures et Ingénierie du logiciel et du Web', 'AIGLE', 'Master', 0, 4, NULL),
+(22, 'Cybersécurité', 'CYBER', 'Master', 0, 14, NULL),
+(23, 'Ecole d’ingénieur', 'ISIS', 'Ecole inge', 0, 15, 'Oui'),
+(24, 'Informatique Graphique et Analyse de l\'Image', 'IGAI', 'Master', 0, 1, 'Oui'),
+(25, 'Mecatronique, Automatique, Robotique et Signal', 'MARS', 'Master', 0, 16, NULL),
+(26, 'Systèmes Interactifs et Robotique', 'SIR', 'Master', 0, 1, NULL),
+(27, 'Conception d\'Architecture de Machines et Systèmes Informatiques', 'CAMSI', 'Master', 0, 1, NULL),
+(28, 'Systèmes de télécoms & réseaux informatique', 'STRI', 'Master', 0, 1, 'Oui'),
+(29, 'Développement intranet/internet', '', 'Licence pro', 0, 17, NULL),
+(30, 'Sciences de la Modélisation, de l\'Information et des Systèmes ', 'SMIS', 'Master', 0, 1, NULL),
+(31, 'Génie Logiciel, Logiciels Répartis et Embarqués', 'GLRE', 'Master', 0, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -598,7 +599,7 @@ CREATE TABLE IF NOT EXISTS `specialite` (
   `id_specialite` int(11) NOT NULL AUTO_INCREMENT,
   `lib_specialite` varchar(100) NOT NULL,
   PRIMARY KEY (`id_specialite`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `specialite`
