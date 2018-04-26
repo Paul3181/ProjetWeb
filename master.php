@@ -25,30 +25,44 @@
         $tab = array($mention[1],$nbrM[0]);
         $tabMoyenne[] = ($tab);
     }
+
+    //On recupere le nombre d'entreprise dans la region
+    $reponse4 = $conn->query('Select COUNT(id_entreprise) from entreprise where fk_id_region_ese = (SELECT DISTINCT fk_id_region_etab FROM etablissement e, formation f WHERE e.id_etablissement = (SELECT fk_id_etablissement_form from formation WHERE id_formation ='. $_GET['idm'] . '))');
+    $nbEntreprise = $reponse4 -> fetch();
+
+
+    //On recupere le statut des etudiants
+    //reponse4 = $conn->query('');
+
+
     ?>
 
 
     <script type="text/javascript">
-            google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChartMoyenne);
 
-        function drawChart() {
+
+        function drawChartMoyenne() {
 
             var moyenne = new Array(['Nombre Etudiants','Mention']);
             <?php foreach($tabMoyenne as $key => $val){ ?>
             moyenne.push(['<?php echo $val[0]; ?>',<?php echo $val[1]; ?>]);
             <?php } ?>
 
-            var data = google.visualization.arrayToDataTable(moyenne);
+            var dataMoyenne = google.visualization.arrayToDataTable(moyenne);
 
-            var options = {
+            var optionsMoyenne = {
                 title: 'Mention l3 des étudiants:'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechartMoyenne'));
 
-            chart.draw(data, options);
+            chart.draw(dataMoyenne, optionsMoyenne);
         }
+
+
+
     </script>
 
 	<style>
@@ -110,8 +124,9 @@
 					  <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
 					</div>
 					<div id="section3">
-					  <h3>Statistique</h3>
+					  <h3>Statistiques</h3>
                         <div id="piechartMoyenne" style="width: 900px; height: 500px;"></div>
+                        <h4><?php echo $nbEntreprise[0] . ' entreprises en contact dans la region'?></h4>
 					</div>
 					<div id="section4">
 					  <h3>Contacts</h3>
