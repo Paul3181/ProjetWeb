@@ -30,17 +30,25 @@
     $reponse4 = $conn->query('Select COUNT(id_entreprise) from entreprise where fk_id_region_ese = (SELECT DISTINCT fk_id_region_etab FROM etablissement e, formation f WHERE e.id_etablissement = (SELECT fk_id_etablissement_form from formation WHERE id_formation ='. $_GET['idm'] . '))');
     $nbEntreprise = $reponse4 -> fetch();
 
-
     //On recupere le statut des etudiants
-    //reponse4 = $conn->query('');
+    $reponse5 = $conn->query('SELECT * FROM statut');
+    $tabStatut = array();
+    while ($statut = $reponse5->fetch()) {
+        $cpt = $conn->query('SELECT COUNT(*) FROM ancien_etudiant ae, a_effectue e WHERE ae.id_etud = e.fk_id_etud and e.fk_id_formation =' . $master[0] . ' and e.fk_statut_id=' . $statut[0]);
+        $nbrS = $cpt->fetch();
+        $tabS = array($statut[1], $nbrS[0]);
+        $tabStatut[] = ($tabS);
+    }
 
 
     ?>
 
 
     <script type="text/javascript">
+
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChartMoyenne);
+        google.charts.setOnLoadCallback(drawChartReussite);
 
 
         function drawChartMoyenne() {
@@ -61,6 +69,25 @@
             chart.draw(dataMoyenne, optionsMoyenne);
         }
 
+        function drawChartReussite() {
+
+            var reussite = new Array(['Nombre Etudiants','Statut']);
+            <?php foreach($tabStatut as $key => $val){ ?>
+            reussite.push(['<?php echo $val[0]; ?>',<?php echo $val[1]; ?>]);
+            <?php } ?>
+
+            var dataStatut = google.visualization.arrayToDataTable(reussite);
+
+            var optionsStatut = {
+                title: 'Statut des étudiants du master:'
+            };
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('piechartStatut'));
+
+            chart2.draw(dataStatut, optionsStatut);
+        }
+
+
 
 
     </script>
@@ -75,7 +102,7 @@
 		}
 	</style>
 	
-  </head>
+
 
   
   <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -126,6 +153,7 @@
 					<div id="section3">
 					  <h3>Statistiques</h3>
                         <div id="piechartMoyenne" style="width: 900px; height: 500px;"></div>
+                        <div id="piechartStatut" style="width: 900px; height: 500px;"></div>
                         <h4><?php echo $nbEntreprise[0] . ' entreprises en contact dans la region'?></h4>
 					</div>
 					<div id="section4">
@@ -142,4 +170,5 @@
 			
 
   </body>
+
 </html>
