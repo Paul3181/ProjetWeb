@@ -2,6 +2,10 @@
 <html lang="fr">
     <head>
 		<?php include("./include/head.php"); ?>
+		<link href="./include/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="./include/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+		<script src="./include/js/star-rating.js" type="text/javascript"></script>
+		<script src="./include/js/star-rating.min.js" type="text/javascript"></script>
 	</head>
 
 
@@ -39,8 +43,6 @@
         $tabS = array($statut[1], $nbrS[0]);
         $tabStatut[] = ($tabS);
     }
-
-
     ?>
 
 
@@ -86,10 +88,6 @@
 
             chart2.draw(dataStatut, optionsStatut);
         }
-
-
-
-
     </script>
 
 	<style>
@@ -102,7 +100,7 @@
 		}
 	</style>
 	
-
+  </head>
 
   
   <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -142,20 +140,134 @@
 				<div class="col-lg-12">
 					<div id="section1">
 					  <h1><?php echo $master[1]?></h1>
-					  <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
-					  <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
+					  <div class="description">
+						  <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
+						  <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
+					  </div>
+					  <!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+						  Modification de la description
+						</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Description</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								  <span aria-hidden="true">&times;</span>
+								</button>
+							  </div>
+							  <div class="modal-body">
+								<form id="descriptionForm" method="post" class="form-horizontal">
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Nom</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="nom" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Prénom</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="prenom" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Description</label>
+										<div class="col-xs-8">
+											<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-xs-5 col-xs-offset-3">
+											<button type="submit" class="btn btn-primary">Envoyer</button>
+										</div>
+									</div>
+								</form>
+							  </div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
 					</div>
+					
+					<hr>
+					
 					<div id="section2">
 					  <h3>Avis</h3>
-					  <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
-					  <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
+					  <div class="avis">
+						  <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
+						  <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
+					  </div>
+					  <!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
+						  Donner son avis
+						</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Avis</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								  <span aria-hidden="true">&times;</span>
+								</button>
+							  </div>
+							  <div class="modal-body">
+								<form id="avisForm" method="post" class="form-horizontal">
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Nom</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="nom" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Prénom</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="prenom" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Avis</label>
+										<div class="col-xs-8">
+											<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<input id="input-21b" value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.2 data-size="lg"
+											   required title="">
+										<div class="clearfix"></div>
+									</div>
+									<div class="form-group">
+										<div class="col-xs-5 col-xs-offset-3">
+											<button type="submit" class="btn btn-primary">Envoyer</button>
+										</div>
+									</div>
+								</form>
+							  </div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
 					</div>
+					
+					<hr>
+					
 					<div id="section3">
-					  <h3>Statistiques</h3>
+					  <h3>Statistique</h3>
                         <div id="piechartMoyenne" style="width: 900px; height: 500px;"></div>
                         <div id="piechartStatut" style="width: 900px; height: 500px;"></div>
                         <h4><?php echo $nbEntreprise[0] . ' entreprises en contact dans la region'?></h4>
 					</div>
+					
+					<hr>
+					
 					<div id="section4">
 					  <h3>Contacts</h3>
                         <?php
@@ -167,8 +279,10 @@
 				</div>
 			</div>
 		</div>
+		
+		<script>
+		</script>
 			
 
   </body>
-
 </html>
