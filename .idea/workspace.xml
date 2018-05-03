@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6889a54c-737b-438f-bf35-ae88c7e676f3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/master.php" afterPath="$PROJECT_DIR$/master.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,30 +35,22 @@
       <file leaf-file-name="master.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/master.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2380">
-              <caret line="140" column="29" lean-forward="false" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
+            <state relative-caret-position="559">
+              <caret line="268" column="7" lean-forward="false" selection-start-line="268" selection-start-column="7" selection-end-line="268" selection-end-column="7" />
               <folding>
-                <marker date="1524751724828" expanded="true" signature="279:322" ph="SELECT * FRO... formation" />
-                <marker date="1524751724828" expanded="true" signature="448:550" ph="SELECT * FRO... ancien_etudiant" />
-                <marker date="1524751724828" expanded="true" signature="628:652" ph="SELECT menti... moyenne_l3" />
-                <marker date="1524751724828" expanded="true" signature="628:654" ph="SELECT menti... moyenne_l3" />
-                <marker date="1524751724828" expanded="true" signature="755:776" ph="SELECT COUNT... ancien_etudiant" />
-                <marker date="1524751724828" expanded="true" signature="755:864" ph="SELECT COUNT... ancien_etudiant" />
-                <marker date="1524751724828" expanded="true" signature="755:890" ph="SELECT COUNT... ancien_etudiant" />
-                <marker date="1524751724828" expanded="true" signature="755:910" ph="SELECT COUNT... ancien_etudiant" />
-                <marker date="1524751724828" expanded="true" signature="755:911" ph="SELECT COUNT... ancien_etudiant" />
-                <marker date="1524751724828" expanded="true" signature="755:925" ph="SELECT COUNT... ancien_etudiant" />
-                <marker date="1524751724828" expanded="true" signature="1001:1020" ph="..." />
-                <marker date="1524751724828" expanded="true" signature="1001:1021" ph="..." />
-                <marker date="1524751724828" expanded="true" signature="1001:1033" ph="..." />
-                <marker date="1524751724828" expanded="true" signature="1127:1361" ph="Select COUNT... entreprise" />
-                <marker date="1524751724828" expanded="true" signature="1127:1381" ph="Select COUNT... entreprise" />
-                <marker date="1524751724828" expanded="true" signature="1197:1361" ph="SELECT DISTI... etablissement" />
-                <marker date="1524751724828" expanded="true" signature="1293:1360" ph="SELECT fk_id... formation" />
-                <marker date="1524751724828" expanded="true" signature="1293:1361" ph="SELECT fk_id... formation" />
-                <marker date="1524751724828" expanded="true" signature="1500:1520" ph="SELECT * FRO... statut" />
-                <marker date="1524751724828" expanded="true" signature="1622:1769" ph="SELECT COUNT... ancien_etudiant" />
-                <marker date="1524751724828" expanded="true" signature="1945:1973" ph="..." />
+                <element signature="e#6946#6953#1#HTML" expanded="true" />
+                <element signature="e#10578#10585#1#HTML" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1525368433468" expanded="true" signature="611:654" ph="SELECT * FRO... formation" />
+                <marker date="1525368433468" expanded="true" signature="767:869" ph="SELECT * FRO... ancien_etudiant" />
+                <marker date="1525368433468" expanded="true" signature="938:962" ph="SELECT * FRO... moyenne_l3" />
+                <marker date="1525368433468" expanded="true" signature="1053:1208" ph="SELECT COUNT... ancien_etudiant" />
+                <marker date="1525368433468" expanded="true" signature="1400:1654" ph="Select COUNT... entreprise" />
+                <marker date="1525368433468" expanded="true" signature="1470:1653" ph="SELECT DISTI... etablissement" />
+                <marker date="1525368433468" expanded="true" signature="1566:1633" ph="SELECT fk_id... formation" />
+                <marker date="1525368433468" expanded="true" signature="1760:1780" ph="SELECT * FRO... statut" />
+                <marker date="1525368433468" expanded="true" signature="1870:2017" ph="SELECT COUNT... ancien_etudiant" />
               </folding>
             </state>
           </provider>
@@ -171,8 +162,8 @@
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/include/css/style.css" />
         <option value="$PROJECT_DIR$/include/head.php" />
-        <option value="$PROJECT_DIR$/master.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/master.php" />
       </list>
     </option>
   </component>
@@ -287,12 +278,12 @@
       <workItem from="1523992906936" duration="1331000" />
       <workItem from="1524664910438" duration="358000" />
       <workItem from="1524745011571" duration="8014000" />
-      <workItem from="1525354614018" duration="2255000" />
+      <workItem from="1525354614018" duration="2391000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57684000" />
+    <option name="totallyTimeSpent" value="57820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -369,27 +360,19 @@
         <state relative-caret-position="612">
           <caret line="36" column="88" lean-forward="true" selection-start-line="36" selection-start-column="88" selection-end-line="36" selection-end-column="88" />
           <folding>
-            <marker date="1524751724828" expanded="true" signature="279:322" ph="SELECT * FRO... formation" />
-            <marker date="1524751724828" expanded="true" signature="448:550" ph="SELECT * FRO... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="628:652" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="628:654" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="755:776" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:864" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:890" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:910" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:911" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:925" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1001:1020" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1021" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1033" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1127:1361" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1127:1381" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1197:1361" ph="SELECT DISTI... etablissement" />
-            <marker date="1524751724828" expanded="true" signature="1293:1360" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1293:1361" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1500:1520" ph="SELECT * FRO... statut" />
-            <marker date="1524751724828" expanded="true" signature="1622:1769" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1945:1973" ph="..." />
+            <element signature="e#6946#6953#1#HTML" expanded="true" />
+            <element signature="e#10578#10585#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1525368433468" expanded="true" signature="611:654" ph="SELECT * FRO... formation" />
+            <marker date="1525368433468" expanded="true" signature="767:869" ph="SELECT * FRO... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="938:962" ph="SELECT * FRO... moyenne_l3" />
+            <marker date="1525368433468" expanded="true" signature="1053:1208" ph="SELECT COUNT... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="1400:1654" ph="Select COUNT... entreprise" />
+            <marker date="1525368433468" expanded="true" signature="1470:1653" ph="SELECT DISTI... etablissement" />
+            <marker date="1525368433468" expanded="true" signature="1566:1633" ph="SELECT fk_id... formation" />
+            <marker date="1525368433468" expanded="true" signature="1760:1780" ph="SELECT * FRO... statut" />
+            <marker date="1525368433468" expanded="true" signature="1870:2017" ph="SELECT COUNT... ancien_etudiant" />
           </folding>
         </state>
       </provider>
@@ -423,27 +406,19 @@
         <state relative-caret-position="782">
           <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
           <folding>
-            <marker date="1524751724828" expanded="true" signature="279:322" ph="SELECT * FRO... formation" />
-            <marker date="1524751724828" expanded="true" signature="448:550" ph="SELECT * FRO... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="628:652" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="628:654" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="755:776" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:864" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:890" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:910" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:911" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:925" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1001:1020" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1021" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1033" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1127:1361" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1127:1381" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1197:1361" ph="SELECT DISTI... etablissement" />
-            <marker date="1524751724828" expanded="true" signature="1293:1360" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1293:1361" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1500:1520" ph="SELECT * FRO... statut" />
-            <marker date="1524751724828" expanded="true" signature="1622:1769" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1945:1973" ph="..." />
+            <element signature="e#6946#6953#1#HTML" expanded="true" />
+            <element signature="e#10578#10585#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1525368433468" expanded="true" signature="611:654" ph="SELECT * FRO... formation" />
+            <marker date="1525368433468" expanded="true" signature="767:869" ph="SELECT * FRO... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="938:962" ph="SELECT * FRO... moyenne_l3" />
+            <marker date="1525368433468" expanded="true" signature="1053:1208" ph="SELECT COUNT... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="1400:1654" ph="Select COUNT... entreprise" />
+            <marker date="1525368433468" expanded="true" signature="1470:1653" ph="SELECT DISTI... etablissement" />
+            <marker date="1525368433468" expanded="true" signature="1566:1633" ph="SELECT fk_id... formation" />
+            <marker date="1525368433468" expanded="true" signature="1760:1780" ph="SELECT * FRO... statut" />
+            <marker date="1525368433468" expanded="true" signature="1870:2017" ph="SELECT COUNT... ancien_etudiant" />
           </folding>
         </state>
       </provider>
@@ -538,27 +513,19 @@
         <state relative-caret-position="782">
           <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
           <folding>
-            <marker date="1524751724828" expanded="true" signature="279:322" ph="SELECT * FRO... formation" />
-            <marker date="1524751724828" expanded="true" signature="448:550" ph="SELECT * FRO... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="628:652" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="628:654" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="755:776" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:864" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:890" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:910" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:911" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:925" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1001:1020" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1021" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1033" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1127:1361" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1127:1381" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1197:1361" ph="SELECT DISTI... etablissement" />
-            <marker date="1524751724828" expanded="true" signature="1293:1360" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1293:1361" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1500:1520" ph="SELECT * FRO... statut" />
-            <marker date="1524751724828" expanded="true" signature="1622:1769" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1945:1973" ph="..." />
+            <element signature="e#6946#6953#1#HTML" expanded="true" />
+            <element signature="e#10578#10585#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1525368433468" expanded="true" signature="611:654" ph="SELECT * FRO... formation" />
+            <marker date="1525368433468" expanded="true" signature="767:869" ph="SELECT * FRO... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="938:962" ph="SELECT * FRO... moyenne_l3" />
+            <marker date="1525368433468" expanded="true" signature="1053:1208" ph="SELECT COUNT... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="1400:1654" ph="Select COUNT... entreprise" />
+            <marker date="1525368433468" expanded="true" signature="1470:1653" ph="SELECT DISTI... etablissement" />
+            <marker date="1525368433468" expanded="true" signature="1566:1633" ph="SELECT fk_id... formation" />
+            <marker date="1525368433468" expanded="true" signature="1760:1780" ph="SELECT * FRO... statut" />
+            <marker date="1525368433468" expanded="true" signature="1870:2017" ph="SELECT COUNT... ancien_etudiant" />
           </folding>
         </state>
       </provider>
@@ -585,27 +552,19 @@
         <state relative-caret-position="255">
           <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
-            <marker date="1524751724828" expanded="true" signature="279:322" ph="SELECT * FRO... formation" />
-            <marker date="1524751724828" expanded="true" signature="448:550" ph="SELECT * FRO... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="628:652" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="628:654" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="755:776" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:864" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:890" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:910" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:911" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:925" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1001:1020" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1021" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1033" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1127:1361" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1127:1381" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1197:1361" ph="SELECT DISTI... etablissement" />
-            <marker date="1524751724828" expanded="true" signature="1293:1360" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1293:1361" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1500:1520" ph="SELECT * FRO... statut" />
-            <marker date="1524751724828" expanded="true" signature="1622:1769" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1945:1973" ph="..." />
+            <element signature="e#6946#6953#1#HTML" expanded="true" />
+            <element signature="e#10578#10585#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1525368433468" expanded="true" signature="611:654" ph="SELECT * FRO... formation" />
+            <marker date="1525368433468" expanded="true" signature="767:869" ph="SELECT * FRO... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="938:962" ph="SELECT * FRO... moyenne_l3" />
+            <marker date="1525368433468" expanded="true" signature="1053:1208" ph="SELECT COUNT... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="1400:1654" ph="Select COUNT... entreprise" />
+            <marker date="1525368433468" expanded="true" signature="1470:1653" ph="SELECT DISTI... etablissement" />
+            <marker date="1525368433468" expanded="true" signature="1566:1633" ph="SELECT fk_id... formation" />
+            <marker date="1525368433468" expanded="true" signature="1760:1780" ph="SELECT * FRO... statut" />
+            <marker date="1525368433468" expanded="true" signature="1870:2017" ph="SELECT COUNT... ancien_etudiant" />
           </folding>
         </state>
       </provider>
@@ -667,27 +626,19 @@
         <state relative-caret-position="1241">
           <caret line="73" column="49" lean-forward="true" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="49" />
           <folding>
-            <marker date="1524751724828" expanded="true" signature="279:322" ph="SELECT * FRO... formation" />
-            <marker date="1524751724828" expanded="true" signature="448:550" ph="SELECT * FRO... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="628:652" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="628:654" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="755:776" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:864" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:890" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:910" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:911" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:925" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1001:1020" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1021" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1033" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1127:1361" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1127:1381" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1197:1361" ph="SELECT DISTI... etablissement" />
-            <marker date="1524751724828" expanded="true" signature="1293:1360" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1293:1361" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1500:1520" ph="SELECT * FRO... statut" />
-            <marker date="1524751724828" expanded="true" signature="1622:1769" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1945:1973" ph="..." />
+            <element signature="e#6946#6953#1#HTML" expanded="true" />
+            <element signature="e#10578#10585#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1525368433468" expanded="true" signature="611:654" ph="SELECT * FRO... formation" />
+            <marker date="1525368433468" expanded="true" signature="767:869" ph="SELECT * FRO... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="938:962" ph="SELECT * FRO... moyenne_l3" />
+            <marker date="1525368433468" expanded="true" signature="1053:1208" ph="SELECT COUNT... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="1400:1654" ph="Select COUNT... entreprise" />
+            <marker date="1525368433468" expanded="true" signature="1470:1653" ph="SELECT DISTI... etablissement" />
+            <marker date="1525368433468" expanded="true" signature="1566:1633" ph="SELECT fk_id... formation" />
+            <marker date="1525368433468" expanded="true" signature="1760:1780" ph="SELECT * FRO... statut" />
+            <marker date="1525368433468" expanded="true" signature="1870:2017" ph="SELECT COUNT... ancien_etudiant" />
           </folding>
         </state>
       </provider>
@@ -816,30 +767,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/master.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="140" column="29" lean-forward="false" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
+        <state relative-caret-position="559">
+          <caret line="268" column="7" lean-forward="false" selection-start-line="268" selection-start-column="7" selection-end-line="268" selection-end-column="7" />
           <folding>
-            <marker date="1524751724828" expanded="true" signature="279:322" ph="SELECT * FRO... formation" />
-            <marker date="1524751724828" expanded="true" signature="448:550" ph="SELECT * FRO... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="628:652" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="628:654" ph="SELECT menti... moyenne_l3" />
-            <marker date="1524751724828" expanded="true" signature="755:776" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:864" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:890" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:910" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:911" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="755:925" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1001:1020" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1021" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1001:1033" ph="..." />
-            <marker date="1524751724828" expanded="true" signature="1127:1361" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1127:1381" ph="Select COUNT... entreprise" />
-            <marker date="1524751724828" expanded="true" signature="1197:1361" ph="SELECT DISTI... etablissement" />
-            <marker date="1524751724828" expanded="true" signature="1293:1360" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1293:1361" ph="SELECT fk_id... formation" />
-            <marker date="1524751724828" expanded="true" signature="1500:1520" ph="SELECT * FRO... statut" />
-            <marker date="1524751724828" expanded="true" signature="1622:1769" ph="SELECT COUNT... ancien_etudiant" />
-            <marker date="1524751724828" expanded="true" signature="1945:1973" ph="..." />
+            <element signature="e#6946#6953#1#HTML" expanded="true" />
+            <element signature="e#10578#10585#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1525368433468" expanded="true" signature="611:654" ph="SELECT * FRO... formation" />
+            <marker date="1525368433468" expanded="true" signature="767:869" ph="SELECT * FRO... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="938:962" ph="SELECT * FRO... moyenne_l3" />
+            <marker date="1525368433468" expanded="true" signature="1053:1208" ph="SELECT COUNT... ancien_etudiant" />
+            <marker date="1525368433468" expanded="true" signature="1400:1654" ph="Select COUNT... entreprise" />
+            <marker date="1525368433468" expanded="true" signature="1470:1653" ph="SELECT DISTI... etablissement" />
+            <marker date="1525368433468" expanded="true" signature="1566:1633" ph="SELECT fk_id... formation" />
+            <marker date="1525368433468" expanded="true" signature="1760:1780" ph="SELECT * FRO... statut" />
+            <marker date="1525368433468" expanded="true" signature="1870:2017" ph="SELECT COUNT... ancien_etudiant" />
           </folding>
         </state>
       </provider>
