@@ -40,7 +40,6 @@
         $tabStatut[] = ($tabS);
     }
 
-
     ?>
 
 
@@ -88,8 +87,6 @@
         }
 
 
-
-
     </script>
 
 	<style>
@@ -104,7 +101,6 @@
 	
 
 
-  
   <body data-spy="scroll" data-target=".navbar" data-offset="50">
   
 		<div class="containerSpe">
