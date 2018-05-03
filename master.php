@@ -157,7 +157,7 @@ while ($statut = $reponse5->fetch()) {
                                     <div class="form-group">
                                         <label class="col-xs-3 control-label">Description</label>
                                         <div class="col-xs-8">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name ="desc"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -165,6 +165,21 @@ while ($statut = $reponse5->fetch()) {
                                             <button type="submit" class="btn btn-primary">Envoyer</button>
                                         </div>
                                     </div>
+                                    <?php
+                                    require_once('include/connect.inc.php');
+                                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    if(isset($_POST['submit'])) {
+                                        $sql = "INSERT INTO description_attente (id_master, nom, prenom, detail_desc) VALUES(".$master[0].",".$_POST['nom'].",".$_POST['prenom'].",".$_POST['desc'].")";
+                                        if ($conn->query($sql) === TRUE) {
+                                            echo "New record created successfully";
+                                        } else {
+                                            echo "Error: " . $sql . "<br>" . $conn->error;
+                                        }
+                                    }
+
+                                    ?>
+
+
                                 </form>
                             </div>
                             <div class="modal-footer">

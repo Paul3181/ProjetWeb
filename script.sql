@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 14 avr. 2018 à 22:12
+-- Généré le :  jeu. 03 mai 2018 à 21:06
 -- Version du serveur :  5.7.19
--- Version de PHP :  7.1.9
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -204,6 +204,22 @@ INSERT INTO `cursus` (`id_cursus`, `lib_cursus`) VALUES
 (1, 'IUT Informatique + L3 champollion'),
 (2, 'L2-L3 à Champollion'),
 (3, 'Autre cursus');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `description_attente`
+--
+
+DROP TABLE IF EXISTS `description_attente`;
+CREATE TABLE IF NOT EXISTS `description_attente` (
+  `id_desc` int(11) NOT NULL AUTO_INCREMENT,
+  `id_master` int(11) NOT NULL,
+  `nom` varchar(20) NOT NULL,
+  `prenom` varchar(20) NOT NULL,
+  `detail_desc` text NOT NULL,
+  PRIMARY KEY (`id_desc`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='descriptions en attente de validation par ''administrateur';
 
 -- --------------------------------------------------------
 
