@@ -38,6 +38,18 @@ while ($statut = $reponse5->fetch()) {
     $tabS = array($statut[1], $nbrS[0]);
     $tabStatut[] = ($tabS);
 }
+
+//Le formulaire de description
+if(isset($_POST['submit_desc'])) {
+$sql = "INSERT INTO description_attente (id_master, nom, prenom, detail_desc)VALUES('". $master[0] . "', '". $_POST["nom"] . "','" . $_POST["prenom"] . "','" . $_POST["desc"] . "')";
+if ($conn->query($sql) == TRUE) {
+echo "New record created successfully";
+} else {
+echo "Error: " . $sql . "<br>" . $conn->error;
+}
+}
+
+
 ?>
 
 
@@ -162,6 +174,7 @@ while ($statut = $reponse5->fetch()) {
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-5 col-xs-offset-3">
+<<<<<<< HEAD
                                             <button type="submit" name="submit" class="btn btn-primary">Envoyer</button>
                                         </div>
                                     </div>
@@ -179,6 +192,11 @@ while ($statut = $reponse5->fetch()) {
                                     ?>
 
 
+=======
+                                            <button type="submit" class="btn btn-primary" name="submit_desc">Envoyer</button>
+                                        </div>
+                                    </div>
+>>>>>>> cab28d033354b03004b598252385ef9c7712e37b
                                 </form>
                             </div>
                             <div class="modal-footer">
