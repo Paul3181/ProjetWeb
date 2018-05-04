@@ -162,19 +162,18 @@ while ($statut = $reponse5->fetch()) {
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-5 col-xs-offset-3">
-                                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                                            <button type="submit" name="submit" class="btn btn-primary">Envoyer</button>
                                         </div>
                                     </div>
                                     <?php
-                                    require_once('include/connect.inc.php');
-                                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                     if(isset($_POST['submit'])) {
-                                        $sql = "INSERT INTO description_attente (id_master, nom, prenom, detail_desc) VALUES(".$master[0].",".$_POST['nom'].",".$_POST['prenom'].",".$_POST['desc'].")";
-                                        if ($conn->query($sql) === TRUE) {
+                                        $sql = "INSERT INTO description_attente (id_desc, id_master, nom, prenom, detail_desc) VALUES (1,".$master[0].",".$_POST['nom'].",".$_POST['prenom'].",".$_POST['desc'].")";
+										echo $sql;
+                                        /*if (($conn->query($sql)) !== FALSE) {
                                             echo "New record created successfully";
                                         } else {
                                             echo "Error: " . $sql . "<br>" . $conn->error;
-                                        }
+                                        }*/
                                     }
 
                                     ?>
@@ -230,19 +229,44 @@ while ($statut = $reponse5->fetch()) {
                                     <div class="form-group">
                                         <label class="col-xs-3 control-label">Avis</label>
                                         <div class="col-xs-8">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name ="avis"></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <!--<div class="form-group">
                                         <input id="input-21b" value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.2 data-size="lg"
                                                required title="">
                                         <div class="clearfix"></div>
-                                    </div>
+                                    </div>-->
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Note</label>
+										<div class="col-xs-5">
+											<select name="note" id="note" class="form-control">
+												<option selected>0</option>
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+										</div>
+									</div>
                                     <div class="form-group">
                                         <div class="col-xs-5 col-xs-offset-3">
-                                            <button type="submit" class="btn btn-primary">Envoyer</button>
+											<input type='hidden' name='testform' value='1' />
+                                            <button type="submit" name="submit" class="btn btn-primary">Envoyer</button>
                                         </div>
                                     </div>
+									<?php
+                                    if(isset($_POST['submit'])) {
+                                        $sql = "INSERT INTO avis_attente(id_master, nom, prenom, avis_desc, star) VALUES (".$master[0].",".$_POST['nom'].",".$_POST['prenom'].",".$_POST['avis'].",".$_POST['note'].")";
+                                        if ($conn->query($sql) === TRUE) {
+                                            echo "New record created successfully";
+                                        } else {
+                                            echo "Error: " . $sql . "<br>" . $conn->error;
+                                        }
+                                    }
+                                    ?>
+									
                                 </form>
                             </div>
                             <div class="modal-footer">
