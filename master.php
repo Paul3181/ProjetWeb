@@ -38,6 +38,18 @@ while ($statut = $reponse5->fetch()) {
     $tabS = array($statut[1], $nbrS[0]);
     $tabStatut[] = ($tabS);
 }
+
+//Le formulaire de description
+if(isset($_POST['submit_desc'])) {
+$sql = "INSERT INTO description_attente (id_master, nom, prenom, detail_desc)VALUES('". $master[0] . "', '". $_POST["nom"] . "','" . $_POST["prenom"] . "','" . $_POST["desc"] . "')";
+if ($conn->query($sql) == TRUE) {
+echo "New record created successfully";
+} else {
+echo "Error: " . $sql . "<br>" . $conn->error;
+}
+}
+
+
 ?>
 
 
@@ -162,24 +174,9 @@ while ($statut = $reponse5->fetch()) {
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-5 col-xs-offset-3">
-                                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                                            <button type="submit" class="btn btn-primary" name="submit_desc">Envoyer</button>
                                         </div>
                                     </div>
-                                    <?php
-                                    require_once('include/connect.inc.php');
-                                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    if(isset($_POST['submit'])) {
-                                        $sql = "INSERT INTO description_attente (id_master, nom, prenom, detail_desc) VALUES(".$master[0].",".$_POST['nom'].",".$_POST['prenom'].",".$_POST['desc'].")";
-                                        if ($conn->query($sql) === TRUE) {
-                                            echo "New record created successfully";
-                                        } else {
-                                            echo "Error: " . $sql . "<br>" . $conn->error;
-                                        }
-                                    }
-
-                                    ?>
-
-
                                 </form>
                             </div>
                             <div class="modal-footer">
