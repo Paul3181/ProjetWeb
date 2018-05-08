@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 03 mai 2018 à 21:06
+-- Généré le :  mar. 08 mai 2018 à 21:18
 -- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Version de PHP :  7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -107,6 +107,23 @@ INSERT INTO `ancien_etudiant` (`id_etud`, `nom_etud`, `prenom_etud`, `mail_etud`
 (57, 'Ongaro-Carcy', 'Régis', 'regis.ongaro-carcy.1@ulaval.ca', 2011, 0, 0, 2),
 (58, 'Bille', 'Jean-Bernard', 'jb.bille@gmail.com', 2015, 0, 0, 1),
 (59, 'Escourrou', 'Adrien', 'ad.escourrou@gmail.', 2015, 0, 0, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `avis_attente`
+--
+
+DROP TABLE IF EXISTS `avis_attente`;
+CREATE TABLE IF NOT EXISTS `avis_attente` (
+  `id_avis` int(11) NOT NULL AUTO_INCREMENT,
+  `id_master` int(11) DEFAULT NULL,
+  `nom` varchar(20) DEFAULT NULL,
+  `prenom` varchar(20) DEFAULT NULL,
+  `detail_avis` text,
+  `star` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id_avis`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -219,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `description_attente` (
   `prenom` varchar(20) NOT NULL,
   `detail_desc` text NOT NULL,
   PRIMARY KEY (`id_desc`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='descriptions en attente de validation par ''administrateur';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='descriptions en attente de validation par ''administrateur';
 
 -- --------------------------------------------------------
 
