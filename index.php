@@ -226,6 +226,7 @@
 												$coords[] = array($latitude,$longitude);
 												$formation = $results['intitule_form'];
 												$formations[] = array($formation);
+												$href = "master.php?idm=". $results['id_formation'] ."";
 												?>	
 													<div class="card">
 													  <div class="card-body">
@@ -274,6 +275,7 @@
 		
 		var coords = <?php echo json_encode($coords); ?>;
 		var formations = <?php echo json_encode($formations); ?>;
+		var href = <?php echo json_encode($href); ?>;
 		
 		var map = L.map('map');
 		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -286,7 +288,7 @@
 		// marker
 		for (i=0;i<coords.length;i++){
 			var marker = L.marker(coords[i]);
-			marker.bindPopup('<b>'+formations[i]+'</b><br><a href="#">Accéder au master</a>').openPopup();
+			marker.bindPopup('<b>'+formations[i]+'</b><br><a href="'+href+'" onclick="window.open(this.href); return false;">Accéder au master</a>').openPopup();
 			markers.addLayer(marker);
 		}
 		map.addLayer(markers);
