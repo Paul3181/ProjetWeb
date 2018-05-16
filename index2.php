@@ -12,14 +12,59 @@
 
 		<!--Angular-->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		
+		<style>
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #7386D5;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav label {
+    color: white;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
 	</head>
 
     <body ng-app="myApp" ng-controller="myCtrl">
 	
     <div class="wrapper">
-        <!-- Sidebar Holder -->
-        <nav id="sidebar" class="active">
-                <form action="index.php#results" method="GET">
+		<div id="mySidenav" class="sidenav">
+		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		  <form action="index2.php#results" method="GET">
 				  <div class="form-group">
 					<label for="query">Formation</label>
 					<?php
@@ -110,18 +155,12 @@
 					</div>
 				  <button type="submit" class="btn btn-primary" value="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button
 				</form>
-            </nav>
-
+		</div>
 
         <div id="content">
 
 			<div class="navbar-header">
-				<button type="button" id="sidebarCollapse" class="navbar-btn">
-					<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
+				<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
             </div>
 			
 			<div id="nav">
@@ -271,8 +310,15 @@
 	<?php include("./include/footer.php"); ?>
 	
 	<script type="text/javascript">
+	function openNav() {
+		document.getElementById("mySidenav").style.width = "250px";
+	}
+
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+	}
 	
-		var count = "<?php echo $count ?>";
+	var count = "<?php echo $count ?>";
 		$('.left h2').append('<span class="badge badge-secondary">'+count+'</span>');
 		
 		var coords = <?php echo json_encode($coords); ?>;
@@ -294,6 +340,7 @@
 			markers.addLayer(marker);
 		}
 		map.addLayer(markers);
+	
 	</script>
     <script src="./include/js/script.js"></script>
     </body>

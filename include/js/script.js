@@ -5,13 +5,17 @@ app.controller('myCtrl', function($scope) {
 
 
 $(document).ready(function() {
-
+	
 	// collapse
 	$('#sidebarCollapse').on('click', function () {
 		$('#sidebar').toggleClass('active');
-		$(this).toggleClass('active');
-		
-		$('#nav').toggle();
-    });
+		if($('#sidebar').hasClass('active')){
+			$('#nav').show();
+		}else{
+			$('#nav').hide();
+		}
+	});
+	
+	
 	
 });
