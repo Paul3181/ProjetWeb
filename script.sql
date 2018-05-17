@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 03 mai 2018 à 21:06
+-- Généré le :  jeu. 17 mai 2018 à 20:36
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -107,6 +107,34 @@ INSERT INTO `ancien_etudiant` (`id_etud`, `nom_etud`, `prenom_etud`, `mail_etud`
 (57, 'Ongaro-Carcy', 'Régis', 'regis.ongaro-carcy.1@ulaval.ca', 2011, 0, 0, 2),
 (58, 'Bille', 'Jean-Bernard', 'jb.bille@gmail.com', 2015, 0, 0, 1),
 (59, 'Escourrou', 'Adrien', 'ad.escourrou@gmail.', 2015, 0, 0, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `avis_attente`
+--
+
+DROP TABLE IF EXISTS `avis_attente`;
+CREATE TABLE IF NOT EXISTS `avis_attente` (
+  `id_avis` int(11) NOT NULL AUTO_INCREMENT,
+  `id_master` int(11) DEFAULT NULL,
+  `nom` varchar(20) DEFAULT NULL,
+  `prenom` varchar(20) DEFAULT NULL,
+  `detail_avis` text,
+  `star` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id_avis`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `avis_attente`
+--
+
+INSERT INTO `avis_attente` (`id_avis`, `id_master`, `nom`, `prenom`, `detail_avis`, `star`) VALUES
+(8, 4, 'Allan', 'Remi', 'Les cours de ce master m ont permis d’acquérir le savoir nécessaire pour monter ma boite de développement de logiciel.', 4),
+(12, 10, 'Dumen', 'Georges', 'Bon Master, les cours sont sympas. Il faut avoir de bonnes bases en architecture.', 3),
+(13, 10, 'Grand', 'Thomas', 'Première année difficile pour moi, mais j ai su m accrocher, grâce aux conseils des profs, je suis actuellement diplômé', 4),
+(11, 4, 'Ruchuit', 'Jerome', 'Grace a mon alternance en deuxième année j ai pu être formé rapidement au poste que j occupe aujourd hui au sein de l entreprise', 5),
+(14, 4, 'DERET', 'Paul', 'Bon master', 5);
 
 -- --------------------------------------------------------
 
@@ -219,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `description_attente` (
   `prenom` varchar(20) NOT NULL,
   `detail_desc` text NOT NULL,
   PRIMARY KEY (`id_desc`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='descriptions en attente de validation par ''administrateur';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='descriptions en attente de validation par ''administrateur';
 
 -- --------------------------------------------------------
 
@@ -359,6 +387,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `fk_id_specialite_form` int(11) DEFAULT NULL,
   `fk_id_etablissement_form` int(11) DEFAULT NULL,
   `alternance_form` varchar(25) DEFAULT NULL,
+  `description` text NOT NULL,
   PRIMARY KEY (`id_formation`),
   KEY `FK_fomation_id_specialite` (`fk_id_specialite_form`),
   KEY `FK_formation_id_etablissement` (`fk_id_etablissement_form`)
@@ -368,38 +397,38 @@ CREATE TABLE IF NOT EXISTS `formation` (
 -- Déchargement des données de la table `formation`
 --
 
-INSERT INTO `formation` (`id_formation`, `intitule_form`, `sigle_form`, `type_form`, `fk_id_specialite_form`, `fk_id_etablissement_form`, `alternance_form`) VALUES
-(1, 'Informatique', '', 'Master', 0, 1, NULL),
-(2, 'Stratégie Internet et Pilotage de Projets en Entreprise', 'SIPPE', 'Master', 0, 7, NULL),
-(3, 'Données et Connaissances', 'DC', 'Master', 0, 1, NULL),
-(4, 'Développement logiciel', 'DL', 'Master', 0, 1, 'Oui'),
-(5, 'Data Science', 'DAC', 'Master', 0, 3, NULL),
-(6, 'Intelligence artificielle', 'IA', 'Master', 0, 3, NULL),
-(7, 'Mathématiques, Informatique Appliquées et Sciences Humaines et Sociales', 'MIASHS', 'Master', 0, 5, 'Oui'),
-(8, 'Intelligence artificielle', 'IA', 'Master', 0, 6, NULL),
-(9, 'Informatique', '', 'Master', 0, 6, NULL),
-(10, 'Intelligence Artificielle et Reconnaissance de forme', 'IARF', 'Master', 0, 1, 'Oui'),
-(11, 'Audiovisuel, Médias Interactifs Numériques, Jeux', 'AMINJ', 'Master', 0, 2, 'Oui'),
-(12, 'Interactions homme-machine', 'IHM', 'Master', 0, 1, NULL),
-(13, 'Images, Games et Intelligent Agents', 'IMAGINA', 'Master', 0, 2, NULL),
-(14, 'BIG Data', '', 'Master', 0, 8, NULL),
-(15, 'Informatique', '', 'Master', 0, 9, NULL),
-(16, 'Système, réseau et internet ', 'SRI', 'Master', 0, 10, NULL),
-(17, 'Fiabilité Sécurité et  Intégration Logiciels', 'FSIL', 'Master', 0, 11, NULL),
-(18, 'Informatique, Synthèse d\'Images et Conception Graphique', 'ISICG', 'Master', 0, 18, NULL),
-(19, 'Ecole d\'ingénieur', '3IL', 'Ecole inge', 0, 12, 'Oui'),
-(20, 'Modélisation Numérique et Réalité Virtuelle', 'MNRV', 'Master', 0, 13, NULL),
-(21, 'Architectures et Ingénierie du logiciel et du Web', 'AIGLE', 'Master', 0, 4, NULL),
-(22, 'Cybersécurité', 'CYBER', 'Master', 0, 14, NULL),
-(23, 'Ecole d’ingénieur', 'ISIS', 'Ecole inge', 0, 15, 'Oui'),
-(24, 'Informatique Graphique et Analyse de l\'Image', 'IGAI', 'Master', 0, 1, 'Oui'),
-(25, 'Mecatronique, Automatique, Robotique et Signal', 'MARS', 'Master', 0, 16, NULL),
-(26, 'Systèmes Interactifs et Robotique', 'SIR', 'Master', 0, 1, NULL),
-(27, 'Conception d\'Architecture de Machines et Systèmes Informatiques', 'CAMSI', 'Master', 0, 1, NULL),
-(28, 'Systèmes de télécoms & réseaux informatique', 'STRI', 'Master', 0, 1, 'Oui'),
-(29, 'Développement intranet/internet', '', 'Licence pro', 0, 17, NULL),
-(30, 'Sciences de la Modélisation, de l\'Information et des Systèmes ', 'SMIS', 'Master', 0, 1, NULL),
-(31, 'Génie Logiciel, Logiciels Répartis et Embarqués', 'GLRE', 'Master', 0, 1, NULL);
+INSERT INTO `formation` (`id_formation`, `intitule_form`, `sigle_form`, `type_form`, `fk_id_specialite_form`, `fk_id_etablissement_form`, `alternance_form`, `description`) VALUES
+(1, 'Informatique', '', 'Master', 0, 1, NULL, ''),
+(2, 'Stratégie Internet et Pilotage de Projets en Entreprise', 'SIPPE', 'Master', 0, 7, NULL, ''),
+(3, 'Données et Connaissances', 'DC', 'Master', 0, 1, NULL, ''),
+(4, 'Développement logiciel', 'DL', 'Master', 0, 1, 'Oui', 'Le Master Développement Logiciel (DL) de l\'UPS à Toulouse traite tout ce qui concerne la réalisation d\'un produit logiciel, son déploiement et sa maintenance.\r\n\r\nDévelopper un logiciel, c’est produire une solution logicielle en considérant les exigences liées au produit  (le logiciel et sa documentation) ainsi que celles liées à sa réalisation (aspects projet). Pour cela, on s’appuie sur des méthodes, des modèles, des formalismes, des langages, des outils afin de satisfaire les besoins et d’assurer la qualité du produit tout en contrôlant les coûts de développement, les délais de livraison, etc.\r\n\r\nLe Master Développement Logiciel forme des experts dans le domaine du développement de logiciels, en particulier de logiciels répartis ou de logiciels critiques. Outre une formation académique de haut niveau qui donne de solides fondements théoriques, le cursus est fortement professionnalisant : alternance entre enseignements à l’université et travail en entreprise ou en laboratoire (dans le cadre d’un stage ou d’un contrat de professionnalisation), conduite d’un projet de type « bureau d’études » pour le compte d’un client, participation de professionnels à la formation (cours, TD, TP, conférences).\r\n\r\nA l\'issue de leur formation, les diplômés occupent des postes d’ingénieur dans différents types d\'entreprises ou poursuivent leurs études dans le cadre d’un doctorat. Avec un profil très recherché, la quasi-totalité des diplômés du Master DL sont embauchés en CDI dès la fin de leur formation (et même avant pour certains d\'entre eux).'),
+(5, 'Data Science', 'DAC', 'Master', 0, 3, NULL, ''),
+(6, 'Intelligence artificielle', 'IA', 'Master', 0, 3, NULL, ''),
+(7, 'Mathématiques, Informatique Appliquées et Sciences Humaines et Sociales', 'MIASHS', 'Master', 0, 5, 'Oui', ''),
+(8, 'Intelligence artificielle', 'IA', 'Master', 0, 6, NULL, ''),
+(9, 'Informatique', '', 'Master', 0, 6, NULL, ''),
+(10, 'Intelligence Artificielle et Reconnaissance de forme', 'IARF', 'Master', 0, 1, 'Oui', 'La spécialité IARF a comme objectif de former des professionnels de haut niveau capables de concevoir des solutions à des problèmes complexes utilisant des méthodes avancées de représentation et de traitement de l\'information, faisant appel à des techniques d\'intelligence artificielle (IA) et de reconnaissance des formes (RF) et d\'apprentissage automatique, appliqués notamment au traitement d\'images et de la parole.En 2e année du Master, les enseignements de la spécialité IARF sont communs à ceux du parcours « Robotique et Décision[/url] » du Master « Ingénierie des Systèmes Temps Réels ». Les étudiants acquièrent une double compétence en Automatique et Informatique et les capacités requises pour modéliser, analyser, concevoir et réaliser des systèmes automatiques complexes, autonomes et/ou embarqués où sont impliqués la perception (capteurs), l\'analyse (traitement de signal, audio, image, vidéo), le raisonnement et la décision (incertitude, reconnaissance de formes, contraintes) et de l\'action (commande, robotique).'),
+(11, 'Audiovisuel, Médias Interactifs Numériques, Jeux', 'AMINJ', 'Master', 0, 2, 'Oui', ''),
+(12, 'Interactions homme-machine', 'IHM', 'Master', 0, 1, NULL, ''),
+(13, 'Images, Games et Intelligent Agents', 'IMAGINA', 'Master', 0, 2, NULL, ''),
+(14, 'BIG Data', '', 'Master', 0, 8, NULL, ''),
+(15, 'Informatique', '', 'Master', 0, 9, NULL, ''),
+(16, 'Système, réseau et internet ', 'SRI', 'Master', 0, 10, NULL, ''),
+(17, 'Fiabilité Sécurité et  Intégration Logiciels', 'FSIL', 'Master', 0, 11, NULL, ''),
+(18, 'Informatique, Synthèse d\'Images et Conception Graphique', 'ISICG', 'Master', 0, 18, NULL, ''),
+(19, 'Ecole d\'ingénieur', '3IL', 'Ecole inge', 0, 12, 'Oui', ''),
+(20, 'Modélisation Numérique et Réalité Virtuelle', 'MNRV', 'Master', 0, 13, NULL, ''),
+(21, 'Architectures et Ingénierie du logiciel et du Web', 'AIGLE', 'Master', 0, 4, NULL, ''),
+(22, 'Cybersécurité', 'CYBER', 'Master', 0, 14, NULL, ''),
+(23, 'Ecole d’ingénieur', 'ISIS', 'Ecole inge', 0, 15, 'Oui', ''),
+(24, 'Informatique Graphique et Analyse de l\'Image', 'IGAI', 'Master', 0, 1, 'Oui', ''),
+(25, 'Mecatronique, Automatique, Robotique et Signal', 'MARS', 'Master', 0, 16, NULL, ''),
+(26, 'Systèmes Interactifs et Robotique', 'SIR', 'Master', 0, 1, NULL, ''),
+(27, 'Conception d\'Architecture de Machines et Systèmes Informatiques', 'CAMSI', 'Master', 0, 1, NULL, ''),
+(28, 'Systèmes de télécoms & réseaux informatique', 'STRI', 'Master', 0, 1, 'Oui', ''),
+(29, 'Développement intranet/internet', '', 'Licence pro', 0, 17, NULL, ''),
+(30, 'Sciences de la Modélisation, de l\'Information et des Systèmes ', 'SMIS', 'Master', 0, 1, NULL, ''),
+(31, 'Génie Logiciel, Logiciels Répartis et Embarqués', 'GLRE', 'Master', 0, 1, NULL, '');
 
 -- --------------------------------------------------------
 

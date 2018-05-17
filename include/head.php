@@ -10,6 +10,13 @@
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
         integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
         crossorigin=""></script>
+		
+<!--Leaflet MarkerCluster-->
+<link rel="stylesheet" href="./include/css/MarkerCluster.css"/>
+<link rel="stylesheet" href="./include/css/MarkerCluster.Default.css"/>
+<script src="./include/js/leaflet.markercluster.js"></script>
+<script src="./include/js/leaflet.markercluster-src.js"></script>
+		
 <!--Jquery-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
