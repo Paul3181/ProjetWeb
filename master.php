@@ -58,7 +58,7 @@ if(isset($_POST['submit_desc'])) {
 
 //Le formulaire d'avis
 if(isset($_POST['submit_avis'])) {
-	$sql2 = "INSERT INTO avis_attente(id_master, nom, prenom, detail_avis, star) VALUES ('". $master[0] ."', '". $_POST['nom'] . "','" . $_POST['prenom'] . "', '" . $_POST['avis'] . "', '" . $_POST['note'] . "')"; 
+	$sql2 = "INSERT INTO avis_attente(id_master, nom, prenom, detail_avis, star) VALUES ('". $master[0] ."', '". $_POST['nom'] . "','" . $_POST['prenom'] . "', '" . $_POST['avis'] . "', '" . $_POST['note'] . "')";
 	if ($conn->query($sql2) == TRUE) {
 		echo "New record created successfully";
 	} else {
@@ -152,7 +152,7 @@ if(isset($_POST['submit_avis'])) {
                 <h1 style="margin: 20px 0 70px 0;"><?php echo $master[1]?></h1>
                 <div class="description">
 					<div id="map"></div>
-                    <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
+          <?php echo $master[7]; ?>
 					<?php
 						while ($description = $reponse7->fetch()){
 							echo '<p> '. $description[4] .' </p>';
@@ -253,9 +253,9 @@ if(isset($_POST['submit_avis'])) {
 							<?php
 							$compteur++;
 						}
-						
+
 					?>
-					  
+
 					</section>
                 </div>
                 <!-- Button trigger modal -->
@@ -278,19 +278,19 @@ if(isset($_POST['submit_avis'])) {
                                     <div class="form-group">
                                         <label class="col-xs-3 control-label">Nom</label>
                                         <div class="col-xs-5">
-                                            <input type="text" class="form-control" name="nom" />
+                                            <input type="text" class="form-control" name="nom" required="obligatoire"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-xs-3 control-label">Prénom</label>
                                         <div class="col-xs-5">
-                                            <input type="text" class="form-control" name="prenom" />
+                                            <input type="text" class="form-control" name="prenom" required="obligatoire"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-xs-3 control-label">Avis</label>
                                         <div class="col-xs-8">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name ="avis"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name ="avis" required="obligatoire"></textarea>
                                         </div>
                                     </div>
 									<div class="form-group">
@@ -350,7 +350,7 @@ if(isset($_POST['submit_avis'])) {
 						?>
 					  </tbody>
 					</table>
-                
+
             </div>
         </div>
     </div>
@@ -373,7 +373,7 @@ if(isset($_POST['submit_avis'])) {
 
 		}
 	}
-	
+
 		var coords = <?php echo json_encode($coords); ?>;
 		var nom = <?php echo json_encode($nom); ?>;
 		var map = L.map('map');
