@@ -2,10 +2,9 @@
 <html lang="fr">
 <head>
     <?php include("./include/head.php"); ?>
-    <link href="./include/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="./include/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
-    <script src="./include/js/star-rating.js" type="text/javascript"></script>
-    <script src="./include/js/star-rating.min.js" type="text/javascript"></script>
+    <link href="./include/css/comments.css" media="all" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 
@@ -38,6 +37,14 @@ while ($statut = $reponse5->fetch()) {
     $tabS = array($statut[1], $nbrS[0]);
     $tabStatut[] = ($tabS);
 }
+//On recupere les avis
+$reponse6 = $conn->query('SELECT * FROM avis_attente WHERE id_master=' . $_GET['idm']);
+
+//On recupere la description
+$reponse7 = $conn->query('SELECT * FROM description_attente WHERE id_master=' . $_GET['idm']);
+
+//On recupere l'établissement
+$reponse8 = $conn->query('SELECT * FROM formation AS form INNER JOIN etablissement AS etab ON form.fk_id_etablissement_form = etab.id_etablissement AND id_formation=' . $_GET['idm']);
 
 //Le formulaire de description
 if(isset($_POST['submit_desc'])) {
@@ -129,7 +136,7 @@ if(isset($_POST['submit_avis'])) {
                             <ul class="nav navbar-nav">
                                 <li><a href="#section1">Presentation</a></li>
                                 <li><a href="#section2">Avis</a></li>
-                                <li><a href="#section3">Statistique</a></li>
+                                <li><a href="#section3">Statistiques</a></li>
                                 <li><a href="#section4">Contacts</a></li>
                             </ul>
                         </div>
@@ -142,14 +149,25 @@ if(isset($_POST['submit_avis'])) {
     <div class="row">
         <div class="col-lg-12">
             <div id="section1">
-                <h1><?php echo $master[1]?></h1>
+                <h1 style="margin: 20px 0 70px 0;"><?php echo $master[1]?></h1>
                 <div class="description">
+					<div id="map"></div>
                     <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
-                    <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
+					<?php
+						while ($description = $reponse7->fetch()){
+							echo '<p> '. $description[4] .' </p>';
+						}
+						while ($master = $reponse8->fetch()){
+							$latitude = $master['latitude_etab'];
+							$longitude = $master['longitude_etab'];
+							$coords[] = array($latitude,$longitude);
+							$nom = $master['nom_etab'];
+						}
+					?>
                 </div>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-                    Modification de la description
+                    Modifier la description
                 </button>
 
                 <!-- Modal -->
@@ -202,8 +220,43 @@ if(isset($_POST['submit_avis'])) {
             <div id="section2">
                 <h3>Avis</h3>
                 <div class="avis">
-                    <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
-                    <p>Quam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.</p>
+					<section class="comment-list">
+					<?php
+						$compteur=0;
+						$count = 0;
+						$stars = array();
+						while ($avis = $reponse6->fetch()){
+							$count = $reponse6->rowCount();
+							$star = $avis[5];
+							array_push($stars, $star);
+							?>
+							<article class="row">
+								<div class="col-md-2 col-sm-2 hidden-xs">
+								  <figure class="thumbnail">
+									<img class="img-responsive" src="https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png" />
+								  </figure>
+								</div>
+								<div class="col-md-10 col-sm-10">
+								  <div class="panel panel-default arrow left">
+									<div class="panel-body">
+									  <header class="text-left">
+										<?php echo '<div class="comment-user" id=comment'.$compteur.'> '. $avis[3] .' '. $avis[2] .' </div>'; ?>
+										<!--<time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>-->
+									  </header>
+									  <div class="comment-post">
+										<?php echo '<p>'. $avis[4] .'</p>';?>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </article>
+							<?php
+							$compteur++;
+						}
+						
+					?>
+					  
+					</section>
                 </div>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
@@ -240,11 +293,6 @@ if(isset($_POST['submit_avis'])) {
                                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name ="avis"></textarea>
                                         </div>
                                     </div>
-                                    <!--<div class="form-group">
-                                        <input id="input-21b" value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.2 data-size="lg"
-                                               required title="">
-                                        <div class="clearfix"></div>
-                                    </div>-->
 									<div class="form-group">
 										<label class="col-xs-3 control-label">Note</label>
 										<div class="col-xs-5">
@@ -276,9 +324,9 @@ if(isset($_POST['submit_avis'])) {
             <hr>
 
             <div id="section3">
-                <h3>Statistique</h3>
-                <div id="piechartMoyenne" style="width: 900px; height: 500px;"></div>
-                <div id="piechartStatut" style="width: 900px; height: 500px;"></div>
+                <h3>Statistiques</h3>
+                <div id="piechartMoyenne" style="width: 100%; height: 500px;"></div>
+                <div id="piechartStatut" style="width: 100%; height: 500px;"></div>
                 <h4><?php echo $nbEntreprise[0] . ' entreprises en contact dans la region'?></h4>
             </div>
 
@@ -286,17 +334,58 @@ if(isset($_POST['submit_avis'])) {
 
             <div id="section4">
                 <h3>Contacts</h3>
-                <?php
-                while ($etud = $reponse2->fetch()){
-                    echo $etud[2] . '   ' . $etud[1] . "\n" . $etud[3] . "\n";
-                }
-                ?>
+					<table class="table table-striped">
+					  <thead>
+						<tr>
+						  <th scope="col">Nom</th>
+						  <th scope="col">Prénom</th>
+						  <th scope="col">E-mail</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<?php
+							while ($etud = $reponse2->fetch()){
+								echo '<tr><td>'. $etud[1] .'</td><td>'. $etud[2] .'</td><td>'. $etud[3] .'</td></tr>';
+							}
+						?>
+					  </tbody>
+					</table>
+                
             </div>
         </div>
     </div>
 </div>
 
+<?php include("./include/footer.php"); ?>
+
 <script>
+	var count = "<?php echo $count ?>";
+	$('#section2 h3').append('<span class="badge badge-secondary">'+count+'</span>');
+	if(count>0){
+		var starTab = <?php echo json_encode($stars); ?>;
+		for (i=0;i<starTab.length;i++){
+			for (var iter = 0; iter < starTab[i]; iter++) {
+				$('#comment'+i).append('<span class="fa fa-star checked"></span>');
+			}
+			for (var iter = 0; iter < 5-starTab[i]; iter++) {
+				$('#comment'+i).append('<span class="fa fa-star"></span>');
+			}
+
+		}
+	}
+	
+		var coords = <?php echo json_encode($coords); ?>;
+		var nom = <?php echo json_encode($nom); ?>;
+		var map = L.map('map');
+		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		var osmAttrib='Map data © OpenStreetMap contributors';
+		var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+		map.setView(coords[0], 13);
+		map.addLayer(osm);
+		var marker = L.marker(coords[0]);
+		marker.bindPopup('<b>'+nom+'</b>').openPopup();
+		map.addLayer(marker);
+
 </script>
 
 

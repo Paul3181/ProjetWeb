@@ -18,8 +18,6 @@ h2 {
 #map {
     width : 100%;
     height : 500px;
-    /*margin-left: auto;
-    margin-right: auto*/
 }
 
 #content{
@@ -82,7 +80,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	.left{
 		float: left;
 		width: 50%;
-		margin: 0 2px 0 20px;
+		margin: 0 2px 0 0px;
 	}
 
 	.right{
@@ -104,7 +102,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 }
 
-.left .badge{
+.badge{
 	margin-left: 20px;
 }
 
@@ -162,25 +160,13 @@ input[type="search"]::-webkit-search-cancel-button {
 	margin: 50px 0 30px 0;
 }
 
+.description #map {
+	height:150px; 
+	width:30%; 
+	float:right;
+}
+
 h5{
     font-size: 20px;
     margin-left: 20px;
-}
-
-.rating-container{
-	margin: 0 auto;
-    height: 100px;
-    width: 300px;
-}
-
-.star .glyphicon{
-	font-size: 30px;
-}
-
-.caption{
-	visibility: hidden;
-}
-
-.rating-stars{
-	height: 100px;
 }
