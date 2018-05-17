@@ -3,12 +3,6 @@
     <head>
 		<?php include("./include/head.php"); ?>
         <link rel="stylesheet" href="./include/css/sidebar.css"/>
-		
-		<!--Leaflet MarkerCluster-->
-		<link rel="stylesheet" href="./include/css/MarkerCluster.css"/>
-		<link rel="stylesheet" href="./include/css/MarkerCluster.Default.css"/>
-		<script src="./include/js/leaflet.markercluster.js"></script>
-		<script src="./include/js/leaflet.markercluster-src.js"></script>
 
 		<!--Angular-->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
@@ -118,9 +112,6 @@
 			<div class="navbar-header">
 				<button type="button" id="sidebarCollapse" class="navbar-btn">
 					<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
-					<span></span>
-					<span></span>
-					<span></span>
 				</button>
             </div>
 			
@@ -233,21 +224,16 @@
 													  <div class="card-body">
 														<h5 class="card-title"><?php echo $results['intitule_form'] ?></h5>
 														<p class="card-text"><?php echo $results['type_form'] . '<br />' . $results['nom_etab']?></p>
-                                                          <?php echo '<a href= "master.php?idm=' . $results['id_formation'] . '" onclick="window.open(this.href); return false;" class="btn btn-primary">Accéder au master</a>';
+                                                          <?php echo '<a href= "master.php?idm=' . $results['id_formation'] . '" onclick="window.open(this.href); return false;" class="btn btn-primary">En savoir plus</a>';
                                                           ?>
 													  </div>
 													</div>
 												<?php
 											}
 											echo '</div>';
-											/*$tailleCoords = sizeof($coords);
-											  for($i=0; $i<$tailleCoords; $i++){
-												echo $coords[ $i ][0] ,'<br/>';  
-												echo $coords[ $i ][1] ,'<br/>'; 
-											  }*/
 										}else{
 											echo "<h2>Aucun résultat</h2>";
-										}
+																					}
 									/*}else{
 										echo "Minimum length is ".$min_length;
 									}*/
@@ -290,7 +276,7 @@
 		// marker
 		for (i=0;i<coords.length;i++){
 			var marker = L.marker(coords[i]);
-			marker.bindPopup('<b>'+formations[i]+'</b><br><a href="master.php?idm='+hrefs[i]+'" onclick="window.open(this.href); return false;">Accéder au master</a>').openPopup();
+			marker.bindPopup('<b>'+formations[i]+'</b><br><a href="master.php?idm='+hrefs[i]+'" onclick="window.open(this.href); return false;">En savoir plus</a>').openPopup();
 			markers.addLayer(marker);
 		}
 		map.addLayer(markers);

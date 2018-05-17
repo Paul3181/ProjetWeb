@@ -4,6 +4,7 @@
     <?php include("./include/head.php"); ?>
     <link href="./include/css/comments.css" media="all" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 
@@ -41,6 +42,9 @@ $reponse6 = $conn->query('SELECT * FROM avis_attente WHERE id_master=' . $_GET['
 
 //On recupere la description
 $reponse7 = $conn->query('SELECT * FROM description_attente WHERE id_master=' . $_GET['idm']);
+
+//On recupere l'établissement
+$reponse8 = $conn->query('SELECT * FROM formation AS form INNER JOIN etablissement AS etab ON form.fk_id_etablissement_form = etab.id_etablissement AND id_formation=' . $_GET['idm']);
 
 //Le formulaire de description
 if(isset($_POST['submit_desc'])) {
@@ -145,13 +149,19 @@ if(isset($_POST['submit_avis'])) {
     <div class="row">
         <div class="col-lg-12">
             <div id="section1">
-                <h1><?php echo $master[1]?></h1>
+                <h1 style="margin: 20px 0 70px 0;"><?php echo $master[1]?></h1>
                 <div class="description">
-                    <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
+					<div id="map"></div>
                     <p>Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.</p>
 					<?php
 						while ($description = $reponse7->fetch()){
 							echo '<p> '. $description[4] .' </p>';
+						}
+						while ($master = $reponse8->fetch()){
+							$latitude = $master['latitude_etab'];
+							$longitude = $master['longitude_etab'];
+							$coords[] = array($latitude,$longitude);
+							$nom = $master['nom_etab'];
 						}
 					?>
                 </div>
@@ -213,10 +223,12 @@ if(isset($_POST['submit_avis'])) {
 					<section class="comment-list">
 					<?php
 						$compteur=0;
+						$count = 0;
+						$stars = array();
 						while ($avis = $reponse6->fetch()){
 							$count = $reponse6->rowCount();
 							$star = $avis[5];
-							$stars[] = array($star);
+							array_push($stars, $star);
 							?>
 							<article class="row">
 								<div class="col-md-2 col-sm-2 hidden-xs">
@@ -241,6 +253,7 @@ if(isset($_POST['submit_avis'])) {
 							<?php
 							$compteur++;
 						}
+						
 					?>
 					  
 					</section>
@@ -348,17 +361,30 @@ if(isset($_POST['submit_avis'])) {
 <script>
 	var count = "<?php echo $count ?>";
 	$('#section2 h3').append('<span class="badge badge-secondary">'+count+'</span>');
+	if(count>0){
+		var starTab = <?php echo json_encode($stars); ?>;
+		for (i=0;i<starTab.length;i++){
+			for (var iter = 0; iter < starTab[i]; iter++) {
+				$('#comment'+i).append('<span class="fa fa-star checked"></span>');
+			}
+			for (var iter = 0; iter < 5-starTab[i]; iter++) {
+				$('#comment'+i).append('<span class="fa fa-star"></span>');
+			}
 
-	var starTab = <?php echo json_encode($stars); ?>;
-	for (i=0;i<starTab.length;i++){
-		for (var iter = 0; iter < starTab[i]; iter++) {
-			$('#comment'+i).append('<span class="fa fa-star checked"></span>');
 		}
-		for (var iter = 0; iter < 5-starTab[i]; iter++) {
-			$('#comment'+i).append('<span class="fa fa-star"></span>');
-		}
-
 	}
+	
+		var coords = <?php echo json_encode($coords); ?>;
+		var nom = <?php echo json_encode($nom); ?>;
+		var map = L.map('map');
+		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		var osmAttrib='Map data © OpenStreetMap contributors';
+		var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+		map.setView(coords[0], 13);
+		map.addLayer(osm);
+		var marker = L.marker(coords[0]);
+		marker.bindPopup('<b>'+nom+'</b>').openPopup();
+		map.addLayer(marker);
 
 </script>
 
